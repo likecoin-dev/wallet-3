@@ -1,0 +1,38 @@
+<div class="container-fluid" cg-busy="cancelExchangeOfferPromise">
+    <div class="row-fluid">
+        <div class="centering text-justify" ng-init="initStep1()">
+
+            <br>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Name </div>
+                <h5>  {{cancelExchangeOfferForm.name}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Ticker </div>
+                <h5> {{cancelExchangeOfferForm.code}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Currency Id </div>
+                <h5>  {{cancelExchangeOfferForm.currencyId}}  </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12">
+
+
+                <button type="button" class="btn btn-infinity pull-right"
+                        ng-click="cancelExchangeOffer()"><i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

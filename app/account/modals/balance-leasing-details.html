@@ -1,0 +1,138 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+          <br>
+
+            <div class="col-md-6">
+
+                <div class="ucsb">
+                    Balance Lease Recipient
+
+                    &nbsp;
+                    <i
+                      class="fa fa-question-circle-o"
+                      aria-hidden="true"
+                      style="color:#000000;"
+                      popover-placement="left"
+                      popover-trigger="'mouseenter'"
+                      data-container="body"
+                      uib-popover="This account will receive your balance mining power for the block duration specified right side."
+                    ></i>
+
+
+                </div>
+                <h5>
+                    <div class="input-group">
+                        <span class="input-group-addon btn btn-default"
+                              ng-click="searchAliases (leaseForm.recipientRS,leaseForm,'recipientRS')" ng-controller="BaseCtrl"
+                              popover-placement="top" popover-trigger="'mouseenter'" uib-popover="Alias Account search">
+                      <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </span>
+
+                        <input type="text" class="form-control" id="recipientRS" placeholder="Recipient address"
+                               ng-model="leaseForm.recipientRS" >
+
+                        <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="openAddressBookModal()">
+                              <i class="fa fa-address-card-o" aria-hidden="true"></i> </button>
+                    </span>
+
+                    </div>
+                </h5>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="ucsb">
+                     Block Duration for this Lease
+                     &nbsp;
+                     <i
+                       class="fa fa-question-circle-o"
+                       aria-hidden="true"
+                       style="color:#000000;"
+                       popover-placement="left"
+                       popover-trigger="'mouseenter'"
+                       data-container="body"
+                       uib-popover="1.440 Blocks are equal one day. Range from min. 1'440 to max. 65'535 Blocks"
+                     ></i>
+                </div>
+                <h5>
+                    <div class="input-group">
+                        <input type="number" class="form-control" ng-name="period" placeholder="1440"
+                               ng-init="leaseForm.period=1440" ng-model="leaseForm.period" ng-value="{{period}}"
+                               ng-min="1440" ng-max="65535" required>
+                        <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="min()"> <i class="fa fa-fast-backward"
+                                                                                       aria-hidden="true"></i> </button>
+                    <button type="button" class="btn btn-default" ng-click="decrement()"> <i
+                            class="glyphicon glyphicon-minus"></i>  </button>
+                    <button type="button" class="btn btn-default" ng-click="increment()"> <i
+                            class="glyphicon glyphicon-plus"></i>  </button>
+                    <button type="button" class="btn btn-default" ng-click="max()"> <i class="fa fa-fast-forward"
+                                                                                       aria-hidden="true"></i> </button>
+                  </span>
+                    </div>
+                </h5>
+
+            </div>
+
+            <div class="col-xs-12">
+                <hr/>
+            </div>
+
+            <div class="col-lg-12">
+
+                <button type="button" class="btn btn-default" ng-click="addMessage=!addMessage"><i
+                        class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp; Add Encrypted Message
+                </button>
+                <button type="button" class="btn btn-default" ng-click="addPubKey = !addPubKey"><i
+                        class="fa fa-unlock-alt" aria-hidden="true"></i> &nbsp; Add recipient public key
+                </button>
+
+
+                <button ng-disabled="!validForm" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                        class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+                <br><br>
+
+                <div uib-collapse="!addMessage" class="collapse" aria-expanded="false" aria-hidden="true"
+                     style="height: 0px;">
+                    <div class="well well-lg">
+                        <div class="form-group">
+                            <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                                 uib-popover="For message encryption the recipient public key has to be know.">
+                                Message
+                                <small> (max. 160 chars)</small>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" id="message" placeholder=""
+                                   ng-model="leaseForm.message">
+                        </div>
+                    </div>
+                </div>
+
+                <div uib-collapse="!addPubKey" class="collapse" aria-expanded="false" aria-hidden="true"
+                     style="height: 0px;">
+                    <div class="well well-lg">
+                        <div class="form-group">
+                            <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                                 uib-popover="Additional security for brand new accounts without any outbound transaction.">
+                                Recipient Public Key Announcement
+                                <small> (Optional)</small>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" id="message" placeholder=""
+                                   ng-model="leaseForm.pubkey">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div ng-init="initStep()"></div>
+
+        </div>
+    </div>
+</div>

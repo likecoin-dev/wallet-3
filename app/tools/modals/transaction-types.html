@@ -1,0 +1,53 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Transaction Types
+    </h3>
+
+</div>
+<div class="modal-body">
+
+  <div class="container-fluid">
+      <div class="row-fluid">
+          <div class="centering text-left">
+
+            <br>
+
+        <div class="col-md-12">
+
+            <table class="table table-striped table-bordered" >
+
+              <tr> <td compile="0 | transactionIconSubType: 0 "></td> <td class="text-left"> Ordinary Payment </td> </tr>
+              <tr> <td compile="1 | transactionIconSubType: 0 "></td> <td class="text-left"> Encrypted Message </td> </tr>
+              <tr> <td compile="1 | transactionIconSubType: 1 "></td> <td class="text-left"> Alias Assigment, Alias Sell, Alias Buy, Alias Delete </td> </tr>
+              <tr> <td compile="1 | transactionIconSubType: 2 "></td> <td class="text-left"> Poll Creation, Vote Casting   </td> </tr>
+              <tr> <td compile="1 | transactionIconSubType: 5 "></td> <td class="text-left"> Account Info, Effective Balance Lease, Account Control, Account Property, Account Property delete     </td> </tr>
+              <tr> <td width="50px" compile="2 | transactionIconSubType: 0 "></td> <td class="text-left"> Asset Issuance, Asset Transfer, Ask Order Placement, Bid Order Placement, Ask Order Cancellation, Bid Order Cancellation, Dividend Payment, Asset Delete      </td> </tr>
+              <tr> <td compile="5 | transactionIconSubType: 0 "></td> <td class="text-left"> Currency Issuance, Reserve Increase, Reserve Claim, Currency Transfer, Publish Exchange Offer, Exchange Buy, Exchange Sell, Currency Deletion  </td> </tr>
+
+              <!-- <tr> <td compile="7 | transactionIconSubType: 0 "></td> <td class="text-left"> Shuffling Create, Shuffling Cancel, Shuffling Verify  </td> </tr>
+              <tr> <td compile="21 | transactionIconSubType: 3 "></td> <td class="text-left"> Create Subscriptions, Cancel Subscription, Subscription Payment </td> </tr>
+              <tr> <td compile="21 | transactionIconSubType: 0 "></td> <td class="text-left"> Escrow Creation, Escrow Sign, Escrow Results </td> </tr>
+              <tr> <td compile="22 | transactionIconSubType: 0 "></td> <td class="text-left"> AT (Automated Transactions), Create AT, AT Payment </td> </tr> -->
+
+            </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer modal-default">
+  <button ng-disabled="" class="btn btn-default btn-md pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

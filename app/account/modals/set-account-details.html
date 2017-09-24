@@ -1,0 +1,68 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+          <br>
+
+          <form name="setAccountInfoForm" >
+
+            <div class="col-md-12">
+
+              <div class="ucsb"> Account Name
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="Account name max. 100 characters."
+                ></i>
+
+              </div>
+              <h4> <input type="text" class="form-control" id="account_name" placeholder="Account name or leave blank to delete account info."
+                     ng-model="setAccountInfoForm.accountName" validator="accountname" initial-validity="true"> </h4>
+
+            </div>
+
+            <div class="col-md-12"> <hr/> </div>
+
+            <div class="col-md-12">
+
+              <div class="ucsb"> Account Description
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="Account description with max. 1'000 characters"
+                ></i>
+
+              </div>
+              <h5>
+                <textarea class="form-control" rows="3" id="account_desc"
+                  placeholder="Account description or leave blank to delete account info." style="resize: none;"
+                  ng-model="setAccountInfoForm.accountDescription" validator="accountdesc" initial-validity="true">
+                </textarea>
+              </h5>
+
+            </div>
+
+            <div class="col-md-12">
+              <h5>
+                <button ng-disabled="!setAccountInfoForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()">  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+              </h5>
+            </div>
+
+          </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <form name="buyCurrencyForm">
+                <br>
+
+
+                <div class="col-md-6">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover=""> Currency
+                        Id
+                    </div>
+                    <h5>
+
+                        <div class="dont-break-out"> {{ buyCurrencyForm.currencyId }}</div>
+
+                    </h5>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="ucsb"> #Shares</div>
+                    <h5>
+                        <input type="number" class="form-control" id="shares" placeholder="1"
+                               ng-model="buyCurrencyForm.shares" validator="required"
+                               ng-init="buyCurrencyForm.shares=1">
+                    </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb"> #Amount Per Unit</div>
+                    <h5>
+                        <input type="number" class="form-control" id="shares" placeholder="1"
+                               ng-model="buyCurrencyForm.shares" validator="required"
+                               ng-init="buyCurrencyForm.rate=1">
+                    </h5>
+                </div>
+
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12 pull right">
+
+                    <h5>
+                        <button ng-disabled="!buyCurrencyForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="$nextStep()">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                    </h5>
+                </div>
+
+
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div ng-init="initStep1()"></div>

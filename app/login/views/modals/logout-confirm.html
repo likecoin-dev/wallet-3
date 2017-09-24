@@ -1,0 +1,52 @@
+
+<style>
+  .modal .modal-dialog { max-width: 525px; }
+</style>
+
+  <div class="modal-header modal-default text-center">
+
+    <div class="pull-left">  <img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">  </div>
+
+    <h3 style="margin-right:70px;"> Sign Out </h3>
+
+  </div>
+
+  <div class="modal-body text-justify">
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            <div class="col-md-12">
+
+              Session data will be cleared. Your bookmarks are still stored on this computer.
+              In case this is a public computer we recommend to mark 'Clear Local Storage'.
+
+              <hr>
+
+              <form>
+
+                <div class="checkbox">
+                <input type="checkbox" id="clear-local" ng-model="clearLocal"
+                name="clear-local"/>
+                <label for="clear-local"> <strong> Clear Local Storage </strong> </label>
+                </div>
+
+
+              </form>
+                <hr>
+            </div>
+
+  </div>
+  </div>
+
+  </div>
+
+  <div class="modal-footer modal-default">
+      <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+
+      <button type="submit" class="btn btn-infinity pull-right" style="float:right;"
+              ng-click="logout(clearLocal)">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+      </button>
+
+  </div>

@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+          <br>
+                <form name="issueCurrencyForm">
+
+                  <div class="col-md-6">
+                    <div class="ucsb">  Name
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The currency name is unique. Should be between 3-10 characters and longer than the currency code. Once submitted, you will not be able to change this information again, ever. Make sure it is correct."
+                      ></i>
+
+
+                    </div>
+                      <h5>
+
+                        <input type="text" class="form-control" id="name" placeholder="Currency name"
+                               ng-model="issueCurrencyForm.name" validator="required" minlength="3" maxlength="10"
+                               required-error-message=""
+                               minlength="3" maxlength="10"
+                               >
+                      </h5>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Code
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The currency code is unique. Its composed of 3-6 upper case letters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct."
+                      ></i>
+
+
+                    </div>
+                      <h5>
+
+                        <input type="text" class="form-control" id="code" placeholder="Currency Code"
+                               ng-model="issueCurrencyForm.code" validator="required"
+                               minlength="3" maxlength="6"
+                               required-error-message="Currency code is required"
+                               >
+
+                      </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+
+                  <div class="col-md-12">
+                      <div class="ucsb"> Currency Description
+
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="Currency description with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct. "
+                        ></i>
+
+                      </div>
+                      <h5>
+
+                        <textarea class="form-control" rows="3" id="description"
+                          placeholder="Currency description" style="resize: none;"
+                          ng-model="issueCurrencyForm.description" validator="required" initial-validity="true">
+                        </textarea>
+
+                      </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+                  <div class="col-md-12">
+                      <h5>
+                          <button ng-disabled="!issueCurrencyForm.$valid" class="btn btn-infinity pull-right"
+                                  ng-click="$nextStep()">
+                              <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                      </h5>
+                  </div>
+
+
+
+
+
+
+                </form>
+
+        </div>
+
+
+    </div>
+    <div ng-init="initStep1() "></div>
+</div>

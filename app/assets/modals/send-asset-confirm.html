@@ -1,0 +1,76 @@
+<div class="container-fluid" cg-busy="sendAssetPromise">
+    <div class="row-fluid">
+        <div class="col-md-12" >
+            <div class="centering text-justify"
+                 ng-init="transferAsset()">
+
+                 <br>
+
+                 <div class="col-md-6">
+                   <div class="ucsb"> Asset Id </div>
+                     <h5>  {{transferAssetForm.assetId}} </h5>
+                 </div>
+
+                 <div class="col-md-6">
+                   <div class="ucsb"> Asset </div>
+                     <h5> <div class="dont-break-out"> {{transferAssetForm.name}} </div>  </h5>
+                 </div>
+
+                 <div class="col-md-12">
+                     <hr/>
+                 </div>
+
+                 <div class="col-md-6">
+                   <div class="ucsb"> Recipient </div>
+                     <h5>  {{transferAssetForm.recipient}} </h5>
+                 </div>
+
+                 <div class="col-md-6">
+                   <div class="ucsb"> Quantity </div>
+                     <h5>  {{ transferAssetForm.quantity }} </h5>
+                 </div>
+
+                 <div class="col-md-12">
+                     <hr/>
+                 </div>
+
+                 <div class="col-md-6">
+                     <div class="ucsb"> Valid </div>
+                     <h5><div compile='validBytes|txIsValid'></div></h5>
+                 </div>
+
+                 <div class="col-md-6">
+                   <div class="ucsb"> Service Fee </div>
+                     <h5> </strong> {{ tx_fee | amountTKN }} </strong>  <small> XIN </small> </h5>
+                 </div>
+
+                 <div class="col-md-12">
+                     <hr/>
+                 </div>
+
+                 <div class="col-md-12">
+
+                   <button ng-disabled="$isFirst()" class="btn btn-default" ng-click="$previousStep()">
+                     <i class="fa fa-chevron-left" aria-hidden="true"></i> </button>
+
+                     <button type="button" class="btn btn-default" ng-click="unsignedTx = !unsignedTx">
+                       <i class="fa fa-key" aria-hidden="true"></i>  &nbsp; Signed Transaction
+                     </button>
+
+                     <button ng-disabled="!validBytes" type="button" class="btn btn-infinity pull-right"
+                             ng-click="broadcastTransaction(transactionBytes)"> <i class="fa fa-check" aria-hidden="true"></i>
+                     </button>
+
+                     <br><br>
+                     <div uib-collapse="!unsignedTx" class="collapse" aria-expanded="false" aria-hidden="true"
+                          style="height: 0px;">
+                         <div class="well well-lg dont-break-out">
+                             {{transactionBytes}}
+                         </div>
+                     </div>
+                 </div>
+
+            </div>
+        </div>
+    </div>
+</div>

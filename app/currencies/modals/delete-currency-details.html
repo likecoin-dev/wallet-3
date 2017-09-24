@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+          <br>
+                <form name="deleteCurrencyForm">
+
+                  <div class="col-md-6">
+                    <div class="ucsb">  Ticker
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="Unique ticker code."
+                      ></i>
+
+
+                    </div>
+                      <h5>  {{deleteCurrencyForm.ticker}} </h5>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Currency Id
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="Currency Id"
+                      ></i>
+
+                    </div>
+                      <h5>   {{deleteCurrencyForm.currencyId}}   </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+                  <div class="col-md-10">
+                    <h5>
+                      <i
+                        class="fa fa-info-circle"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                      ></i> &nbsp;Currencies can be deleted only if all units are in issuer possession.
+                    </h5>
+                  </div>
+
+                  <div class="col-md-2">
+                    <h5>
+                      <button ng-disabled="!deleteCurrencyForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                        class="fa fa-chevron-right"
+                        aria-hidden="true"></i>
+                      </button>
+                    </h5>
+                  </div>
+
+
+
+                </form>
+
+        </div>
+<div ng-init="initStep1()"></div>
+
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+          <form name="currencyReserveClaimForm">
+          <br>
+
+          <div class="col-md-6">
+            <div class="ucsb">  Ticker </div>
+              <h5>  {{currencyReserveClaimForm.ticker}} </h5>
+          </div>
+
+          <div class="col-md-6">
+            <div class="ucsb"> Currency Id </div>
+              <h5>   {{currencyReserveClaimForm.currencyId}}   </h5>
+          </div>
+
+          <div class="col-md-12">
+              <hr/>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="ucsb">  Currency Units </div>
+            <h5 class="input-group">
+                <input type="number" class="form-control" id="units"
+                       placeholder="" validator="required"
+                       ng-model="currencyReserveClaimForm.units"
+                       ng-init="currencyReserveClaimForm.units=1"
+                       >
+
+                <span class="input-group-addon" id="addon-buyRate">UNITS</span>
+            </h5>
+          </div>
+
+          <div class="col-md-6">
+              <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                  &nbsp; </div>
+              <h5>
+                  <button ng-disabled="!currencyReserveClaimForm.$valid" class="btn btn-infinity pull-right"
+                          ng-click="$nextStep()">
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+              </h5>
+          </div>
+
+
+          </form>
+
+    </div>
+  </div>
+</div>
+
+<div ng-init="initStep1()"></div>

@@ -1,0 +1,30 @@
+<div class="navbar navbar-default navbar-fixed-bottom ">
+
+    <div class="col-lg-2 hidden-md hidden-sm hidden-xs">
+
+      <span class="navbar-brand pull-left">  <span class="label label-xs" style="margin-top:-3px;color:#616161;">
+          <small>  Infinity SmartWallet | This app is owned by the Infinity community and managed by the Infinity Foundation. </small> </span>
+      </span>
+
+    </div>
+
+    <div class="col-lg-10 pull-right" ng-controller="FooterController" ng-init="init()">
+
+        <cc-auto-refresh-fn
+                refresh-fn="init()"
+                refresh-interval="options.REFRESH_INTERVAL_MILLI_SECONDS"
+                refresh-paused="!options.AUTO_UPDATE"
+        >
+        </cc-auto-refresh-fn>
+
+        <span class="navbar-brand pull-right">
+          <span class="label label-xs" style="margin-top:-3px;color:#616161;">  <small> Height : {{currentHeight}}  </small> </span>
+          <span class="label label-xs" style="margin-top:-3px;color:#616161;">  <small> Nodes : {{totalNodes}} </small> </span>
+          <span class="label label-xs" style="margin-top:-3px;color:#616161;">  <small> Connected : {{connectedURL}}  </small> </span>
+          <span class="label label-xs" style="margin-top:-3px;color:#616161;" ng-init="getState()"><small> Synced : {{peerState.isDownloading|isSync}}  </small> </span>
+          <span class="label label-xs" style="margin-top:-3px;color:#616161;">  <small> Version : {{options.VERSION}}  </small>  </span>
+        </span>
+
+    </div>
+
+</div>

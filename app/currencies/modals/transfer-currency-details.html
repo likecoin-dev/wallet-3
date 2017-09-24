@@ -1,0 +1,136 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <br>
+            <form name="transferCurrencyForm">
+                <div class="col-md-6">
+                    <div class="ucsb"> Ticker
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Unique ticker code."
+                        ></i>
+
+                    </div>
+                    <h5> {{transferCurrencyForm.ticker}} </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Currency Id
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Currency Id"
+                        ></i>
+
+                    </div>
+                    <h5> {{transferCurrencyForm.currencyId}} </h5>
+                </div>
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Recipient
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The recipient for this currency transfer"
+                        ></i>
+
+
+                    </div>
+                    <h5>
+
+                        <div class="input-group">
+                            <span class="input-group-addon btn btn-default"
+                                  ng-click="searchAliases (transferCurrencyForm.recipient,transferCurrencyForm,'recipient')"
+                                  ng-controller="BaseCtrl"
+                                  popover-placement="top" popover-trigger="'mouseenter'"
+                                  uib-popover="Alias Account search">
+                                <i class="fa fa-share-alt" aria-hidden="true"></i>
+                            </span>
+
+                            <input type="text" class="form-control" id="recipientRS" placeholder="Recipient address"
+                                   ng-model="transferCurrencyForm.recipient" validator="required"
+                            >
+
+
+                            <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="openAddressBookModal()"><i
+                                  class="glyphicon glyphicon-user"></i></button>
+                        </span>
+
+                        </div>
+
+
+                    </h5>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="ucsb"> Units
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Number of units for this transfer. "
+                        ></i>
+
+
+                    </div>
+
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="units"
+                               placeholder="" validator="required"
+                               ng-model="transferCurrencyForm.units">
+
+                        <span class="input-group-addon" id="addon-units">UNITS</span>
+                    </h5>
+
+
+                </div>
+
+
+                <div class="col-md-1">
+                    <div class="ucsb">  &nbsp;  </div>
+                    <h5>
+                        <button ng-disabled="!transferCurrencyForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="nextStep()"><i
+                                class="fa fa-chevron-right"
+                                aria-hidden="true"></i>
+                        </button>
+                    </h5>
+                </div>
+
+
+
+            </form>
+
+        </div>
+
+        <div ng-init="initStep1()"></div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="container-fluid" cg-busy="sendReferencePromise">
+    <div class="row-fluid">
+
+            <div class="centering text-justify"
+                 ng-init="getAndVerifyAccount(sendReferencedForm)">
+
+                <br>
+
+                <div class="col-md-4">
+
+                    <div class="ucsb"> Recipient Account</div>
+                    <h5> </strong> {{ReferencedForm.recipientRS}} </strong>  </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Recipient Name </div>
+
+                    <div class="dont-break-out">
+                      <h5> </strong>  {{accountDetails.name | notSet}} </strong> </h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Recipient Balance </div>
+                    <h5>  </strong> {{accountDetails.balanceTQT| amountTQT}} </strong> <small> XIN</small> </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Token Send </div>
+                    <h5> </strong>  {{ tx_amount | amountTKN }} </strong>
+                    <small> XIN</small> </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Service Fee </div>
+                    <h5> </strong>  {{tx_fee | amountTKN }} </strong>
+                    <small> XIN</small> </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Token Total </div>
+                    <h5>  </strong> <span
+                        style="color:black">  {{ tx_total | amountTKN }} </span> </strong>
+                    <small> XIN</small> </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Validation </div>
+                    <h5> <div compile='validBytes|txIsValid'></div>    </h5>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Message Added </div>
+                  <h5><div compile='hasMessageAdded|isEnabled'></div></h5>
+
+                </div>
+
+                <div class="col-md-4">
+                  <div class="ucsb">  Public Key Added </div>
+                  <h5><div compile='hasPublicKeyAdded|isEnabled'></div></h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ucsb">  Deferred Blocks </div>
+                    <h5> {{ sendReferencedForm.deferredHeight}}   </h5>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="ucsb">  Referenced Hash </div>
+                    <h5> <div class="dont-break-out"> {{ sendReferencedForm.fullHash}} </div>  </h5>
+                </div>
+
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-11">
+
+                  <button ng-disabled="" type="button" class="btn btn-default pull-left"
+                          ng-click= "$previousStep()"><i class="fa fa-chevron-left" aria-hidden="true"></i>
+                  </button> &nbsp;
+
+                    <button type="button" class="btn btn-default" ng-click="unsignedTx = !unsignedTx">
+                      <i class="fa fa-key" aria-hidden="true"></i>  &nbsp; Signed Transaction
+                    </button>
+
+
+                      <button type="button" class="btn btn-default" ng-click="aMessage = !aMessage">
+                        <i class="fa fa-lock" aria-hidden="true"></i> &nbsp; Encrypted Message
+                      </button>
+
+                  </div>
+
+                  <div class="col-md-1">
+                    <button ng-disabled="!validBytes" type="button" class="btn btn-infinity pull-right"
+                            ng-click="broadcastTransaction(transactionBytes)"> <i class="fa fa-check" aria-hidden="true"></i>
+                    </button>
+
+                  </div>
+
+                  <div class="col-md-12">
+
+                    <div uib-collapse="!unsignedTx" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well well-lg dont-break-out">
+                            {{transactionBytes}}
+                        </div>
+                    </div>
+
+                    <div uib-collapse="!aMessage" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well well-lg dont-break-out">
+                            {{encrypted}}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+    </div>
+</div>

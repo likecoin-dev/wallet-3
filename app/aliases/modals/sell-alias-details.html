@@ -1,0 +1,148 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <form name="sellAliasForm">
+                <br>
+
+                <div class="col-md-6">
+                    <div class="ucsb">
+                      Name
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The alias to sell."
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{ sellAliasForm.name }}</div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb">
+                      URI
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The current resource your alias is pointing to."
+                      ></i>
+
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{ sellAliasForm.uri | notSet  }}</div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="ucsb">
+                      Recipient for a private Sell
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="You can sell your alias to public or to a specific account. Enter a recipient account for a private sell or leave free for a public sell "
+                      ></i>
+
+                    </div>
+
+                    <h5>
+                        <div class="input-group">
+
+                            <span class="input-group-addon btn btn-default"
+                                  ng-click="searchAliases (sellAliasForm.recipientRS,sellAliasForm,'recipientRS')"
+                                  ng-controller="BaseCtrl"
+                                  popover-placement="top" popover-trigger="'mouseenter'"
+                                  uib-popover="Alias Account search">
+                                <i class="fa fa-share-alt" aria-hidden="true"></i>
+                            </span>
+                            <input type="text" class="form-control"
+                                   placeholder="Recipient for private or empty for public sell."
+                                   ng-model="sellAliasForm.recipientRS" id="recipientRS">
+
+
+                            <span class="input-group-addon btn btn-default" ng-click="openAddressBookModal()"
+                                  popover-placement="left" popover-trigger="'mouseenter'"
+                                  uib-popover="Open addressbook">
+                                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                          </span>
+
+                        </div>
+                    </h5>
+
+                </div>
+
+
+                <div class="col-md-5">
+
+                    <div class="ucsb">
+                      Price
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The price you want to sell this alias"
+                      ></i>
+
+                    </div>
+
+                    <h4 class="input-group">
+                        <input type="number" class="form-control" id="amount"
+                               placeholder="Price for this alias" validator="required" min="0"
+                               ng-model="sellAliasForm.price">
+
+                        <span class="input-group-addon" id="addon-amount">XIN</span>
+                    </h4>
+
+                </div>
+
+                <div class="col-md-1">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                        &nbsp; </div>
+                    <h5>
+                        <button ng-disabled="!sellAliasForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="$nextStep()">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                    </h5>
+                </div>
+
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div ng-init="initStep1()"></div>

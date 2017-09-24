@@ -1,0 +1,119 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+                <form name="editAliasForm">
+                  <br>
+                  <div class="col-md-3">
+                    <div class="ucsb"> Alias
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The alias to edit."
+                      ></i>
+
+                    </div>
+                    <h5>
+                    <div class="dont-break-out"> {{editAliasForm.name}} </div>
+                    </h5>
+
+                  </div>
+
+                  <div class="col-md-9">
+                    <div class="ucsb" >
+                      URI
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The current resource your alias is pointing to."
+                      ></i>
+
+
+                    </div>
+                    <h5>
+
+                    <div class="dont-break-out"> {{ editAliasForm.uriold | notSet }} </div>
+
+                    </h5>
+
+                  </div>
+
+
+                  <div class="col-md-12"> <hr/> </div>
+
+                  <div class="col-md-3">
+
+                    <div class="ucsb" >
+                        Prefix
+
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="Alias prefix you like to connect your alias with."
+                        ></i>
+
+                    </div>
+                    <h5>
+                      <select class="form-control" ng-model="editAliasForm.prefix"
+                        ng-options="prefix.name for prefix in prefixes">
+                      </select>
+                    </h5>
+
+                  </div>
+
+                  <div class="col-md-8">
+                    <div class="ucsb" >
+
+                      URI
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The resource or target you like to connect your alias with. Can be your account, a website or even a BTC address. For URL ensure your uri starts with http://"
+                      ></i>
+
+                    </div>
+                    <h5 class="input-group">
+                      <input type="text" class="form-control" id="uri" placeholder=""
+                             ng-model="editAliasForm.uri" >
+                             <span class="input-group-addon" id="addon-amount">@XIN</span>
+                    </h5>
+                  </div>
+
+
+                  <div class="col-md-1">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"uib-popover=""> &nbsp; </div>
+                    <h5> <button ng-disabled="" class="btn btn-infinity pull-right" ng-click="$nextStep()"> <i class="fa fa-chevron-right" aria-hidden="true"></i>  </button></h5>
+
+                  </div>
+ 
+
+                </form>
+
+        </div>
+    </div>
+</div>
+
+<div ng-init="initStep1()"></div>

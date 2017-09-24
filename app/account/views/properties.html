@@ -1,0 +1,106 @@
+
+
+
+<div class="col-lg-10" ng-controller="AccountMainCtrl">
+
+  <uib-accordion close-others="false">
+      <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+          <uib-accordion-heading>
+              Account Properties Desk
+              <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+          </uib-accordion-heading>
+
+          <button ng-disabled="false" class="btn btn-default btn-md"
+            ng-click="openSetAccountPropertyModal()">
+            <i class="fa fa-database" aria-hidden="true"></i> &nbsp; Set Property
+          </button>
+
+        </div>
+      </uib-accordion>
+
+</div>
+
+<div class="col-lg-10" ng-controller="AccountPropertiesCtrl">
+
+  <cc-auto-refresh-fn
+          refresh-fn = "reloadMyProperties()"
+          refresh-interval = "options.REFRESH_INTERVAL_MILLI_SECONDS"
+          refresh-paused = "!options.AUTO_UPDATE"
+  >
+  </cc-auto-refresh-fn>
+
+  <uib-accordion close-others="false">
+      <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+          <uib-accordion-heading>
+              My Account Properties
+              <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+          </uib-accordion-heading>
+
+          <div class="btn-group">
+            <label class="btn btn-default btn-xs" ng-click="reloadMyProperties()"
+             popover-placement="top" popover-trigger="'mouseenter'" uib-popover="Reload"><i class="fa fa-refresh" aria-hidden="true"></i></label>
+          </div> <br>
+
+          <table datatable="" dt-options="dtMyPropertiesOptions"
+                 dt-columns="dtMyPropertiesColumns" dt-instance="dtInstanceMyPropertiesCallback"
+                 class="table table-striped table-bordered">
+              <thead>
+              <tr>
+
+                  <th>setterRS</th>
+                  <th>property</th>
+                  <th>value</th>
+                  <th>Action</th>
+
+              </tr>
+              </thead>
+          </table>
+
+        </div>
+</uib-accordion>
+
+
+
+<cc-auto-refresh-fn
+        refresh-fn = "reloadForeignProperties()"
+        refresh-interval = "options.REFRESH_INTERVAL_MILLI_SECONDS"
+        refresh-paused = "!options.AUTO_UPDATE"
+>
+</cc-auto-refresh-fn>
+
+<uib-accordion close-others="false">
+    <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+        <uib-accordion-heading>
+            External Account Properties
+            <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+        </uib-accordion-heading>
+
+        <div class="btn-group">
+          <label class="btn btn-default btn-xs" ng-click="reloadForeignProperties()"
+           popover-placement="top" popover-trigger="'mouseenter'" uib-popover="Reload"><i class="fa fa-refresh" aria-hidden="true"></i></label>
+        </div> <br>
+
+        <table datatable="" dt-options="dtForeignPropertiesOptions"
+               dt-columns="dtForeignPropertiesColumns" dt-instance="dtInstanceForeignPropertiesCallback"
+               class="table table-striped table-bordered">
+            <thead>
+            <tr>
+
+                <th>setterRS</th>
+                <th>property</th>
+                <th>value</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+        </table>
+
+      </div>
+</uib-accordion>
+
+
+    <div class="footer-padding"></div>
+</div>

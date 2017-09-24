@@ -1,0 +1,39 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 968px;
+    }
+</style>
+
+<multi-step-container steps="steps.expectedTransfersForm" class="simple-prev-next">
+    <div class="modal-header modal-default text-center">
+        <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+        </div>
+        <h3 style="margin-right:70px;">
+            <span ng-bind-template=" {{$getActiveStep().title}} "></span>
+        </h3>
+    </div>
+    <div class="modal-body">
+        <div class="centering text-center">
+            <step-container></step-container>
+        </div>
+    </div>
+
+
+
+    <div class="modal-footer modal-default">
+        <button ng-disabled=""  id="closeModal" class="btn btn-default pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+    </div>
+
+    <script type="text/javascript">
+
+      $(document).ready(function() {
+
+        setTimeout(function (){
+              $('#closeModal').focus();
+        }, 100);
+
+      });
+
+     </script>
+
+</multi-step-container>

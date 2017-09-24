@@ -1,0 +1,168 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center" id="myModal">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Service Fees
+    </h3>
+
+</div>
+<div class="modal-body">
+
+  <div class="container-fluid">
+      <div class="row-fluid">
+          <div class="centering text-left">
+
+          <div class="col-md-12">
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-credit-card" aria-hidden="true" style="width:30px;"></i>&nbsp;Ordinary Payments
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+                  General service transaction fee is 1 <small> XIN </small>. Attached encrypted messages are 2 <small> XIN </small>
+                  for the first 32 bytes and 1 <small> XIN </small> for each additional 32 bytes. Encrypted and non-prunable messages
+                  have a maximum length of 160 bytes. Public key announcement is free.
+                </div>
+
+            </uib-accordion>
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-share-alt" aria-hidden="true" style="width:30px;"></i>&nbsp;Aliases
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                  2 <small> XIN </small> to set an alias with 2 <small> XIN </small> additional fee for each 32 chars of name plus URI total length, after the first 32 bytes.
+                  Aliases are unique and can be any string of latin-character numbers and letters. Aliases have a maximun length of 100 bytes and 1000 bytes for the uri.
+                  Buy/sell an alias is 1 <small> XIN </small>.
+
+
+                </div>
+
+            </uib-accordion>
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-envelope-o" aria-hidden="true" style="width:30px;"></i>&nbsp;Messages
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                  2 <small> XIN </small> for the first 32 bytes of a chain stored encrypted message. 1  <small> XIN </small> for each additional 32 bytes.
+                  Maximum message length for encrypted and non-prunable messages is 160 bytes. Upcoming encrypted messenger is free of service fee with
+                  up to 1'000 bytes and a maximum of 1'000 last messages per user.
+
+                </div>
+
+            </uib-accordion>
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-bar-chart" aria-hidden="true" style="width:30px;"></i>&nbsp;Assets
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                  1'000 <small> XIN </small> for issue an asset and 1 <small> XIN </small> for singleton assets (1 share). Once issued an asset can't
+                  re-issued. Minimum name length 3 characters and max. 16. Asset description max. length 1'000 bytes. Asset names are unique
+                  and can be any upper/lowercase string of latin-character numbers and letters. Unique asset identifier
+                  is the asset ID. Buy/Sell and cancel open orders is 1 <small> XIN </small>.
+
+                </div>
+
+            </uib-accordion>
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-random" aria-hidden="true" style="width:30px;"></i>&nbsp;Currencies
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                  25'000 <small> XIN </small> for 3-letter,
+                  1'000 <small> XIN </small> for 4-letter,
+                  500 <small> XIN </small> for 5-letter and
+                  250 <small> XIN </small> for 6 letter currency issuance.
+                  The ticker XIN and some known crypto currency symbols are restricted. Currencies name are unique.
+                  Currencies are uppercase latin-character only.
+                  Minimum currency name 3 and maximum 16. Minimum currency code is 3 and maximum 6 characters.
+                  Maximum currency description length is 1'000 bytes.
+                  Buy/Sell and cancel exchanges is 1 <small> XIN </small> and 40 <small> XIN </small> for re-issue any currency.
+                  Re-issue is only possible if all units
+                  are on issuer account.
+
+                </div>
+
+            </uib-accordion>
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-signal" aria-hidden="true" style="width:30px;" ></i>&nbsp;Voting
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                    10 <small> XIN </small> to create a poll including 10 options and total size name and description plus options length not exceeding 320 bytes.
+                    2 <small> XIN </small> for each 32 byres after 320 bytes. Voting 1 <small> XIN </small>. Maximum poll name length is 100 bytes, description
+                    1'000 bytes. Maximum poll options are 10 and max. poll duration is 20'160 blocks (~14 Days).
+
+                </div>
+
+            </uib-accordion>
+
+            <uib-accordion close-others="true">
+
+                <div uib-accordion-group class="panel-default" is-open="status.open">
+                  <uib-accordion-heading>
+                    <i class="fa fa-user" aria-hidden="true" style="width:30px;"></i>&nbsp;Additional Services
+                    <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                  Set or delete account info is 1 <small> XIN </small> including 32 chars, with 2 <small> XIN </small> additional fee for each 32 chars.
+                  Balance leasing is 1 <small> XIN </small>.
+                  Account control is 1 <small> XIN </small>.
+                  Special transactions like deferred or secret transactions are 2 <small> XIN </small>.
+
+                </div>
+
+            </uib-accordion>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer modal-default">
+  <button ng-disabled="" id="closeModal" class="btn btn-default btn-md pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>
+
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+    setTimeout(function (){
+          $('#closeModal').focus();
+    }, 100);
+
+  });
+
+ </script>

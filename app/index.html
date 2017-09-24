@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Infinity Wallet</title>
+    <META NAME="robots" CONTENT="noindex,nofollow">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <!-- build:css(.) styles/vendor.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" href="/bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css">
+    <link href="/bower_components/angular-datatables/dist/css/angular-datatables.min.css" rel="stylesheet">
+    <link href="/bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css"
+          rel="stylesheet">
+    <link href="/bower_components/datatables.net-scroller-dt/css/scroller.dataTables.min.css" rel="stylesheet">
+    <link href="/bower_components/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/bower_components/nvd3/build/nv.d3.css">
+    <link rel="stylesheet" href="/bower_components/angular-busy/dist/angular-busy.min.css"/>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(app) styles/bundle.min.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="styles/app.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <style>
+        .ng-invalid.ng-dirty{
+        .has-error .form-control
+
+        }
+        label.has-error.control-label {
+        .has-error .control-label;
+        }
+    </style>
+</head>
+<body ng-app="client">
+
+<div ui-view></div>
+</body>
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<!-- build:js(.) scripts/lib.min.js -->
+<!-- bower:js -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/lodash/lodash.js"></script>
+<script src="/bower_components/restangular/dist/restangular.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="/bower_components/ngstorage/ngStorage.min.js"></script>
+<script src="/bower_components/angular-multi-step-form/dist/browser/angular-multi-step-form.min.js"></script>
+<script src="/bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
+<script src="/bower_components/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
+<script src="/bower_components/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="/bower_components/angular-datatables/dist/plugins/scroller/angular-datatables.scroller.min.js"></script>
+<script src="/bower_components/moment/moment.js"></script>
+<script src="/bower_components/angular-moment/angular-moment.min.js"></script>
+<script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="/bower_components/qrcode/lib/qrcode.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-qr/angular-qr.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-ui-mask/dist/mask.js"></script>
+<script type="text/javascript" src="/bower_components/angular-indexedDB/angular-indexed-db.js"></script>
+<script type="text/javascript" src="/app/forks/angular-validation/angular-validation.js"></script>
+<script type="text/javascript" src="/app/forks/angular-validation/angular-validation-rule.js"></script>
+<script type="text/javascript" src="/bower_components/angular-cc-autorefresh/js/cc-autorefresh-tpls.js"></script>
+<script type="text/javascript" src="/bower_components/checklist-model/checklist-model.js"></script>
+<script type="text/javascript" src="/bower_components/chart.js/dist/Chart.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
+
+<script type="text/javascript" src="/bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="/bower_components/nvd3/build/nv.d3.min.js"></script>
+<script type="text/javascript" src="/bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+<script type="text/javascript" src="/bower_components/angular-translate/angular-translate.min.js"></script>
+<script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+<script src="/bower_components/angular-busy/dist/angular-busy.min.js" type="text/javascript"></script>
+
+<!-- endbower -->
+<!-- endbuild -->
+
+
+
+<!-- build:js(app) scripts/crypto.min.js -->
+<!-- bower:js -->
+<script src="crypto/external/pako.js" type="text/javascript"></script>
+<script src="crypto/external/jsbn.js" type="text/javascript"></script>
+<script src="crypto/external/converters.js" type="text/javascript"></script>
+<script src="crypto/external/curve25519.js" type="text/javascript"></script>
+<script src="crypto/external/jssha256.js" type="text/javascript"></script>
+<script src="crypto/external/rsaddress.js" type="text/javascript"></script>
+<script src="crypto/external/aes.js" type="text/javascript"></script>
+<script src="crypto/external/wordlist.js" type="text/javascript"></script>
+<script src="crypto/external/seedrandom.js" type="text/javascript"></script>
+<script src="crypto/external/passphrasegenerator.js" type="text/javascript"></script>
+<script src="crypto/external/sha256.js" type="text/javascript"></script>
+<script src="crypto/external/curve25519_.js" type="text/javascript"></script>
+
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js(app) scripts/bundle.min.js -->
+<!-- bower:js -->
+<script src="global/base-app.js"></script>
+<script src="global/base-app-filters.js"></script>
+<script src="global/fee-service.js"></script>
+<script src="global/form-validations.js"></script>
+<script src="global/base-controller.js"></script>
+<script src="global/http-interceptor.js"></script>
+<script src="global/state-auth-manager.js"></script>
+<script src="crypto/crypto.js"></script>
+<script src="crypto/crypto-wrappers.js"></script>
+<script src="crypto/crypto-service.js"></script>
+<script src="crypto/crypto-controller.js"></script>
+<script src="node/node-app.js"></script>
+<script src="node/node-service.js"></script>
+<script src="node/node-controller.js"></script>
+<script src="global/transaction-service.js"></script>
+<script src="alerts/alert-app.js"></script>
+<script src="addressbook/addressbook-app.js"></script>
+<script src="addressbook/addressbook-controller.js"></script>
+<script src="options/options-app.js"></script>
+<script src="options/options-controller.js"></script>
+<script src="exchanges/exchange-app.js"></script>
+<script src="exchanges/blockr-service.js"></script>
+<script src="exchanges/blockr-controller.js"></script>
+<script src="login/login-app.js"></script>
+<script src="login/login-service.js"></script>
+<script src="login/login-controller.js"></script>
+<script src="assets/assets-app.js"></script>
+<script src="assets/assets-service.js"></script>
+<script src="assets/assets-controller.js"></script>
+<script src="assets/issue-asset-controller.js"></script>
+<script src="assets/delete-asset-controller.js"></script>
+<script src="assets/search-asset-controller.js"></script>
+<script src="assets/cancel-order-controller.js"></script>
+<script src="assets/transfer-asset-controller.js"></script>
+<script src="assets/dividend-payment-controller.js"></script>
+<script src="assets/place-order-controller.js"></script>
+<script src="assets/trade-desk-controller.js"></script>
+<script src="assets/assets-estimates-controller.js"></script>
+<script src="currencies/currencies-app.js"></script>
+<script src="currencies/currencies-service.js"></script>
+<script src="currencies/currencies-controller.js"></script>
+<script src="currencies/search-currency-controller.js"></script>
+<script src="currencies/issue-currency-controller.js"></script>
+<script src="currencies/delete-currency-controller.js"></script>
+<script src="currencies/transfer-currency-controller.js"></script>
+<script src="currencies/publish-exchange-controller.js"></script>
+<script src="currencies/currency-reserve-claim-controller.js"></script>
+<script src="currencies/currency-reserve-increase-controller.js"></script>
+<script src="currencies/buy-currency-controller.js"></script>
+<script src="currencies/sell-currency-controller.js"></script>
+<script src="currencies/currency-trade-desk-controller.js"></script>
+<script src="currencies/cancel-exchange-offer-controller.js"></script>
+<script src="account/account-app.js"></script>
+<script src="account/account-service.js"></script>
+<script src="account/faucet-service.js"></script>
+<script src="account/account-controller.js"></script>
+<script src="account/send-form-controller.js"></script>
+<script src="account/set-account-form-controller.js"></script>
+<script src="account/search-account-controller.js"></script>
+<script src="account/account-control-controller.js"></script>
+<script src="account/set-account-control-controller.js"></script>
+<script src="account/remove-account-control-controller.js"></script>
+<script src="account/welcome-faucet-form-controller.js"></script>
+<script src="polls/poll-app.js"></script>
+<script src="polls/poll-service.js"></script>
+<script src="polls/poll-controller.js"></script>
+<script src="polls/search-poll-controller.js"></script>
+<script src="polls/create-poll-controller.js"></script>
+<script src="polls/cast-vote-controller.js"></script>
+<script src="messages/messages-app.js"></script>
+<script src="messages/messages-service.js"></script>
+<script src="messages/messages-controller.js"></script>
+<script src="aliases/aliases-app.js"></script>
+<script src="aliases/aliases-service.js"></script>
+<script src="aliases/aliases-controller.js"></script>
+<script src="aliases/set-alias-controller.js"></script>
+<script src="aliases/delete-alias-controller.js"></script>
+<script src="aliases/search-alias-controller.js"></script>
+<script src="aliases/sell-alias-controller.js"></script>
+<script src="aliases/buy-alias-controller.js"></script>
+<script src="aliases/transfer-alias-controller.js"></script>
+<script src="search/search-app.js"></script>
+<script src="search/search-service.js"></script>
+<script src="search/search-controller.js"></script>
+<script src="extensions/chain-viewer/chain-viewer-app.js"></script>
+<script src="extensions/chain-viewer/chain-viewer-service.js"></script>
+<script src="extensions/chain-viewer/chain-viewer-controller.js"></script>
+<script src="extensions/macap-viewer/macap-viewer-app.js"></script>
+<script src="extensions/macap-viewer/macap-viewer-service.js"></script>
+<script src="extensions/macap-viewer/macap-viewer-controller.js"></script>
+<script src="extensions/extensions-app.js"></script>
+<script src="tools/tools-app.js"></script>
+<script src="tools/tools-service.js"></script>
+<script src="tools/tools-controller.js"></script>
+<script src="dashboard/dashboard-app.js"></script>
+<script src="dashboard/dashboard-service.js"></script>
+<script src="dashboard/dashboard-controller.js"></script>
+<script src="crowdfunding/crowdfunding-app.js"></script>
+<script src="crowdfunding/crowdfunding-service.js"></script>
+<script src="crowdfunding/crowdfunding-controller.js"></script>
+<script src="subscriptions/subscription-app.js"></script>
+<script src="subscriptions/subscription-service.js"></script>
+<script src="subscriptions/subscription-controller.js"></script>
+<script src="escrow/escrow-app.js"></script>
+<script src="escrow/escrow-service.js"></script>
+<script src="escrow/escrow-controller.js"></script>
+<script src="global/global-app.js"></script>
+<script src="global/footer-controller.js"></script>
+
+<!-- endbower -->
+<!-- endbuild -->
+<script>if (window.module) module = window.module;</script>
+</html>

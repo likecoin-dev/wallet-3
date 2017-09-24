@@ -1,0 +1,110 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Parse Transaction Bytes
+    </h3>
+
+</div>
+<div class="modal-body">
+
+  <div class="container-fluid">
+      <div class="row-fluid">
+          <div class="centering text-left">
+
+            <div ng-controller="AlertDemoCtrl" ng-init="alertInit('parseTransaction')">
+                <script type="text/ng-template" id="alert.html">
+                    <div ng-transclude></div>
+                </script>
+
+                <div uib-alert ng-repeat="alert in alerts.parseTransaction" ng-class="'alert-' + (alert.type || 'warning')"
+                     close="closeAlert($index,'parseTransaction')">{{alert.msg}}
+                </div>
+            </div>
+
+
+            <br>
+
+            <div class="col-md-12">
+                <div class="ucsb"> Transaction Bytes
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="Transaction bytes (hex) to parse. Output is shown as JSON."
+                  ></i>
+
+                </div>
+                <h5>
+
+                  <textarea class="form-control" rows="5" id="inputToken"
+                    placeholder="" style="resize: none;"
+                    ng-model="parseTransactionForm.bytes" validator="required" initial-validity="true">
+                  </textarea>
+
+                </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12">
+                <div class="ucsb"> Transaction JSON
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="The parsed transaction byted in JSON format."
+                  ></i>
+
+
+                </div>
+                <h5>
+
+                  <textarea class="form-control" rows="5" id="inputToken"
+                    placeholder="" style="resize: none;"
+                    ng-model="parseTransactionForm.json" validator="required" initial-validity="true">
+                  </textarea>
+
+                </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12">
+              <button type="submit" ng-disabled="false" class="btn btn-{{buttonColor}} pull-right"
+                ng-click="parseTransaction(parseTransactionForm.bytes)">  Parse
+             </button>
+            </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer modal-default">
+  <button ng-disabled="" class="btn btn-default btn-md pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

@@ -1,0 +1,104 @@
+<div class="row" ng-controller="DashboardCtrl">
+    <div class="col-lg-12">
+
+        <div class="row text-center">
+
+            <cc-auto-refresh-fn
+                    refresh-fn="reloadDashboard()"
+                    refresh-interval="options.REFRESH_INTERVAL_MILLI_SECONDS"
+                    refresh-paused="!options.AUTO_UPDATE"
+            >
+            </cc-auto-refresh-fn>
+
+            <div class="col-lg-2 col-md-6">
+
+
+              <uib-accordion close-others="false">
+
+                  <div uib-accordion-group class="panel-default" is-open="true" style="background-color:#FFFFFF;" >
+
+                    <uib-accordion-heading>
+                       <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp; Account Balance
+                    </uib-accordion-heading>
+                    <h4> <span ng-bind-html='accountBalance | balanceStyler'></span> </h4>
+                  </div>
+              </uib-accordion>
+
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+
+              <uib-accordion close-others="false">
+                  <div uib-accordion-group class="panel-default" is-open="true" style="background-color:#FFFFFF;">
+                    <uib-accordion-heading>
+                       <i class="fa fa-bar-chart" aria-hidden="true"> </i>&nbsp; Assets
+
+                    </uib-accordion-heading>
+                    <h4 ng-init="getAccountAssetsAndBalances()"> {{assetsCount}} </h4>
+                  </div>
+              </uib-accordion>
+
+
+            </div>
+
+            <div class="col-lg-2 col-md-6" >
+
+
+              <uib-accordion close-others="false">
+                  <div uib-accordion-group class="panel-default" is-open="true" style="background-color:#FFFFFF;">
+                    <uib-accordion-heading>
+                       <i class="fa fa-random" aria-hidden="true"> </i>&nbsp; Currencies
+                    </uib-accordion-heading>
+                    <h4> {{currenciesCount}}</h4>
+                  </div>
+              </uib-accordion>
+
+
+
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+
+              <uib-accordion close-others="false">
+                  <div uib-accordion-group class="panel-default" is-open="true" style="background-color:#FFFFFF;">
+                    <uib-accordion-heading>
+                       <i class="fa fa-envelope-o" aria-hidden="true"> </i>&nbsp; Messages
+                    </uib-accordion-heading>
+                  <h4> {{messagesCount}} </h4>
+                  </div>
+              </uib-accordion>
+
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+
+
+              <uib-accordion close-others="false">
+                  <div uib-accordion-group class="panel-default" is-open="true" style="background-color:#FFFFFF;">
+                    <uib-accordion-heading>
+                       <i class="fa fa-share-alt" aria-hidden="true"> </i>&nbsp;  Aliases
+                    </uib-accordion-heading>
+                  <h4> {{aliasesCount}} </h4>
+                  </div>
+              </uib-accordion>
+
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+
+              <uib-accordion close-others="false">
+                  <div uib-accordion-group class="panel-default" is-open="true" style="background-color:#FFFFFF;">
+                    <uib-accordion-heading>
+                       <i class="fa fa-signal" aria-hidden="true"> </i>&nbsp; Polls
+                    </uib-accordion-heading>
+                  <h4> {{pollsCount}} </h4>
+                  </div>
+              </uib-accordion>
+
+
+            </div>
+
+          </div>
+
+    </div>
+</div>

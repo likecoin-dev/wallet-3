@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="centering text-left">
+
+            <br>
+
+            <form name="signEscrow">
+
+                <div class="col-md-4">
+                    <div class="ucsb">
+                      Escrow Id
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The escrow ID to sign for."
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        {{signEscrow.ID}}
+                    </h5>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="ucsb">
+                      Decision Model
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The signing decision for this escrow."
+                      ></i>
+
+                    </div>
+
+                    <h5>
+                      <select class="form-control" ng-model="signEscrow.decision"
+                              validator="required" id="decision"
+                              ng-init="createEscrow.decision = decisionOptions[0].value"
+                          >
+                          <option value="release">Release</option>
+                          <option value="refund">Refund</option>
+                          <option value="split">Split</option>
+                      </select>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-4">
+
+                  <div class="ucsb">&nbsp;</div>
+                  <h4>
+                    <button ng-disabled="!signEscrow.$valid" class="btn btn-infinity pull-right"
+                    ng-click="$nextStep()"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                  </h4>
+                </div>
+
+            </form>
+            <div ng-init="initStep1()"></div>
+
+        </div>
+
+    </div>
+</div>

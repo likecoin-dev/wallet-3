@@ -1,0 +1,36 @@
+<div class="container-fluid" ng-init="initStep1()">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <br>
+
+            <div class="col-md-6">
+                <div class="ucsb"> Controlled Account </div>
+                <h5></strong> {{ jsonControl.accountRS }} </strong></h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ucsb"> Control Model </div>
+                <h5></strong> {{ jsonControl.votingModel|controlModel }} Approval</strong></h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <form name="removeAccountControlForm">
+
+                <div class="col-md-12">
+
+                    <h4>
+                        <button ng-disabled="!removeAccountControlForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="$nextStep()"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </h4>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

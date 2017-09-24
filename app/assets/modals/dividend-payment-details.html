@@ -1,0 +1,124 @@
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <br>
+
+                <form name="dividendPaymentForm">
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Asset Id
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The unique asset id"
+                      ></i>
+
+                    </div>
+                      <h5>  {{dividendPaymentForm.assetId}} </h5>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Asset
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The asset name/ticker"
+                      ></i>
+
+                    </div>
+                      <h5> <div class="dont-break-out"> {{dividendPaymentForm.asset}} </div>  </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Amount per Share
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The dividend in XIN for EACH share. If you have a total to pay, divide it by the number of total shares."
+                      ></i>
+
+                    </div>
+
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="amountPerQuant"
+                               placeholder="" validator="required" min="0"
+                               ng-model="dividendPaymentForm.amountPerQuant">
+
+                        <span class="input-group-addon" id="addon-amountPerQuant">XIN</span>
+                    </h5>
+
+                  </div>
+
+
+                  <div class="col-md-5">
+                    <div class="ucsb"> Height
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The block height when this payment has to be made. Usualy immediatly but can be deferred to a specific block."
+                      ></i>
+
+
+                    </div>
+
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="height"
+                               placeholder="" validator="required"
+                               ng-model="dividendPaymentForm.height"
+                               ng-init="dividendPaymentForm.height=0">
+
+                        <span class="input-group-addon" id="addon-shares">@BLOCK</span>
+                    </h5>
+
+
+
+                  </div>
+
+
+                  <div class="col-md-1">
+                    <div class="ucsb">  &nbsp;  </div>
+                    <h5>
+                      <button ng-disabled="!dividendPaymentForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                        class="fa fa-chevron-right"
+                        aria-hidden="true"></i>
+                      </button>
+                    </h5>
+                  </div>
+
+                </form>
+
+        </div>
+
+        <div ng-init="initStep1()"></div>
+    </div>
+</div>

@@ -1,0 +1,348 @@
+
+
+img.gray {
+    -webkit-filter: grayscale(100%);
+       -moz-filter: grayscale(100%);
+         -o-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+            filter: grayscale(100%);
+}
+
+img.grayscale {
+  /* Firefox 10+, Firefox on Android */
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
+
+  /* IE 6-9 */
+  filter: gray;
+
+  /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+  -webkit-filter: grayscale(100%);
+}
+
+
+.btn-infinity {
+    background: #F69221;
+    color: #ffffff;
+}
+
+.btn-infinity:hover, .btn-infinity:focus, .btn-infinity:active, .btn-infinity.active, .open > .dropdown-toggle.btn-infinity {
+    background: #747474;
+    color: #ffffff;
+}
+
+.btn-infinity:active, .btn-infinity.active {
+    background: #747474;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.btn-infinityInv {
+    background: #9e9e9e;
+    color: #ffffff;
+}
+
+.btn-infinityInv:hover, .btn-infinityInv:focus, .btn-infinityInv:active, .btn-infininfinityInvity.active, .open > .dropdown-toggle.btn-infinityInv {
+    background: #F69221;
+    color: #ffffff;
+}
+
+.btn-infinityInv:active, .btn-infinityInv.active {
+    background: #F69221;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+
+
+
+.btn-infinityL {
+    background: #fff3e0;
+    color: #ffffff;
+}
+
+.btn-infinityL:hover, .btn-infinityL:focus, .btn-infinityL:active, .btn-infinityL.active, .open > .dropdown-toggle.btn-infinityL {
+    background: #747474;
+    color: #ffffff;
+}
+
+.btn-infinityL:active, .btn-infinityL.active {
+    background: #747474;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+
+
+
+
+.pointer {
+    cursor: pointer;
+}
+
+.pagination > li.active > a {
+  background: #F69221;
+  color: #fff;
+  border-color: #F69221;
+}
+
+.pagination > li.active > a:hover {
+  background: #747474;
+  color: #fff;
+  border-color: #747474;
+}
+
+
+.pointer {
+    cursor: pointer;
+}
+
+
+
+* {
+  border-radius: 0 !important;
+}
+
+.table .text-right {text-align: right}
+.table .text-left {text-align: left}
+.table .text-center {text-align: center}
+
+
+
+
+
+.dont-break-out {
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+
+table.table {
+  clear: both;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+
+  word-break: break-all;
+ }
+
+
+/* Uppercase and small */
+.ucs {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.ucsb {
+    text-transform: uppercase;
+    font-size: 0.90em;
+    font-weight: bold;
+    color: #000000;
+}
+
+.modal-open .modal,.btn:focus{ outline:none;}
+
+
+.modal-default {
+  background-color: #EEEEEE;
+}
+
+.navbar-default {
+  font: 17px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+  background-color: #E7E7E7;
+
+  border-top: 1px solid #C7C7C7;
+  border-bottom: 1px solid #C7C7C7;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+
+    background-color: #C7C7C7;
+}
+
+.divider-vertical {
+  height: 50px;
+  margin: 0 9px;
+  border-left: 1px solid #C7C7C7;
+  border-right: 1px solid #FFF;
+
+}
+
+.no-padding{
+  padding:0;
+  margin: 0;
+}
+
+.panel-default > .panel-heading {
+
+  background-color: #E7E7E7;
+  border-color: #ddd;
+}
+
+.modal-default > .modal-heading {
+
+  background-color: #E7E7E7;
+
+}
+
+body {
+
+  padding: 80px 40px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #F4F4F4F;
+
+}
+
+html, body{height:100%; margin:0;padding:0}
+
+.container-fluid{
+  height:100%;
+  display:table;
+  width: 100%;
+  padding: 0;
+}
+
+.row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
+
+.centering {
+  float:none;
+  margin:0 auto;
+}
+
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+
+  min-height:100%;
+   min-width:100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ .row-centered {
+     text-align:center;
+ }
+
+ .vcenter {
+     display: inline-block;
+     vertical-align: middle;
+     float: none;
+ }
+
+ .vertical-align {
+     display: flex;
+     align-items: center;
+ }
+
+
+.modal-default {
+  background-color: #f5f5f5;
+}
+
+
+body {
+  padding: 80px 40px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.footer-padding {
+  height: 50px;
+  width: 100%;
+}
+
+#lblBlockcount {
+  margin-right: 10px;
+}
+
+.table td {
+  text-align: center;
+}
+
+.table th {
+  text-align: center;
+}
+
+#index-search {
+  padding-top: 10px;
+}
+
+.search-bar-div {
+  width:300px;
+
+}
+
+#block-details-table {
+  /*table-layout: fixed;*/
+  /*word-wrap: break-word;*/
+}
+
+#transaction-details-table {
+  word-wrap: break-word;
+}
+
+#currency-details-table {
+  max-width: none;
+}
+
+.modal-dialog {
+  width: 90%;
+}
+
+.borderless td, .borderless th {
+  border: none;
+}
+
+.table td.fit,
+.table th.fit {
+  white-space: nowrap;
+  width: 1%;
+}
+
+.currency-modal-window .modal-dialog {
+  width: 90%;
+}
+
+.poll-modal-window .modal-dialog {
+  width: 90%;
+}
+
+.block-modal-window .modal-dialog {
+  width: 100%;
+}
+
+.asset-modal-window .modal-dialog {
+  width: 90%;
+}
+
+.block-modal-window .modal-dialog {
+  width: 90%;
+}

@@ -1,0 +1,192 @@
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+                <form name="createPollForm">
+
+                  <br>
+
+                  <div class="col-md-6 ">
+                      <div class="ucsb"> Voting Model
+
+
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="Choose the voting model by account, each account has one vote. Balance, each account is weighted by it's balance. Asset is weighted by account asset balance and currency by account currency balance. You can also limit the voters by adding a minimum XIN balance needed to vote."
+                        ></i>
+
+
+                      </div>
+                      <h5>
+                        <select class="form-control" ng-model="createPollForm.votingModel" validator="required"
+                                id="votingModel"
+                                ng-init="createPollForm.votingModel = votingOptions[0].value"
+                            >
+                            <option value="0">Account</option>
+                            <option value="1">Balance</option>
+                            <option value="2">Asset</option>
+                            <option value="3">Currency</option>
+                        </select>
+                      </h5>
+                  </div>
+
+                  <div class="col-md-6 ">
+
+                    <div ng-show="createPollForm.votingModel==1" class="form-group">
+                        <div class="ucsb">
+                          Minimum Voter Balance
+
+                          &nbsp;
+                          <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                            style="color:#000000;"
+                            popover-placement="left"
+                            popover-trigger="'mouseenter'"
+                            data-container="body"
+                            uib-popover="Enter the minimum account balance needed to vote on this poll."
+                          ></i>
+
+                        </div>
+                        <h5 class="input-group">
+
+                        <input type="text" class="form-control" id="minbalance" placeholder="Minimum balance"
+                               ng-model="createPollForm.minbalance"
+                               ng-change=""
+                               ng-value="0"
+                               ng-min="0"
+                               ng-init="createPollForm.minbalance=0"
+                               >
+                              <span class="input-group-addon" id="addon-amount">XIN</span>
+
+                        </h5>
+                    </div>
+
+                    <div ng-show="createPollForm.votingModel==2" class="form-group">
+                        <div class="ucsb"> Asset ID
+
+                          &nbsp;
+                          <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                            style="color:#000000;"
+                            popover-placement="left"
+                            popover-trigger="'mouseenter'"
+                            data-container="body"
+                            uib-popover="Enter the asset ID (numeric)"
+                          ></i>
+
+
+                        </div><h5>
+                        <input type="text" class="form-control" id="asset" placeholder="Asset ID"
+                               ng-model="createPollForm.holding" ng-change="getAsset(createPollForm.holding)">
+                        </h5>
+                    </div>
+
+                    <div ng-show="createPollForm.votingModel==3" class="form-group">
+                        <div class="ucsb"> Currency Ticker
+
+                          &nbsp;
+                          <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                            style="color:#000000;"
+                            popover-placement="left"
+                            popover-trigger="'mouseenter'"
+                            data-container="body"
+                            uib-popover="Enter the currency ticker (text)"
+                          ></i>
+
+                        </div><h5>
+                        <input type="text" class="form-control" id="currency" placeholder="Currency Code/Ticker"
+                               ng-model="createPollForm.holding" ng-change="getCurrency(createPollForm.holding)">
+                        </h5>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+
+                  <div class="col-md-12">
+                      <div class="ucsb"> Name
+
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="Poll names can have max. 100 chars"
+                        ></i>
+
+
+                      </div>
+                      <h5>
+                        <input type="text" class="form-control" id="name" placeholder="Name"
+                        ng-model="createPollForm.name" validator="required"
+                        required-error-message="">
+                      </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+
+
+
+                  <div class="col-md-12">
+                      <div class="ucsb"> Description
+
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="Poll descriptions with max. 1'000 characters"
+                        ></i>
+
+                      </div>
+                      <h5>
+
+                        <textarea class="form-control" rows="3" id="poll_description"
+                          placeholder="Poll description"  style="resize: none;"
+                          ng-model="createPollForm.description" validator="required" initial-validity="true">
+                        </textarea>
+
+                      </h5>
+                  </div>
+
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+                  <div class="col-md-12">
+                    <button ng-disabled="!createPollForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                            class="fa fa-chevron-right"
+                            aria-hidden="true"></i>
+                    </button>
+                  </div>
+
+ 
+
+                </form>
+        </div>
+    </div>
+</div>

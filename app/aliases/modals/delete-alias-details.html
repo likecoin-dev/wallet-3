@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+          <form name="deleteAliasForm">
+          <br>
+
+
+          <div class="col-md-4">
+            <div class="ucsb"> Name
+
+              &nbsp;
+              <i
+                class="fa fa-question-circle-o"
+                aria-hidden="true"
+                style="color:#000000;"
+                popover-placement="left"
+                popover-trigger="'mouseenter'"
+                data-container="body"
+                uib-popover="The alias to delete."
+              ></i>
+
+            </div>
+
+            <h5>
+
+            <div class="dont-break-out"> {{ deleteAliasForm.name }} </div>
+
+            </h5>
+
+          </div>
+
+          <div class="col-md-8">
+            <div class="ucsb" >
+                URI
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The current taget this alias is pointing to."
+                ></i>
+
+              </div>
+            <h5>
+
+            <div class="dont-break-out"> {{ deleteAliasForm.uri | notSet }} </div>
+
+            </h5>
+
+          </div>
+
+          <div class="col-md-12"> <hr/> </div>
+
+          <div class="col-md-12 pull right">
+            <h5> <button ng-disabled="!deleteAliasForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>  </button></h5>
+          </div>
+ 
+
+          </form>
+
+    </div>
+  </div>
+</div>
+
+<div ng-init="initStep1()"></div>

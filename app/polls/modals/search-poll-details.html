@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+          <br>
+            <div class="col-md-12">
+
+                <form name="searchPollForm" ng-submit="onSubmit()">
+
+                  <div class="ucsb" for="query"> Search for Polls
+
+                    &nbsp;
+                    <i
+                      class="fa fa-question-circle-o"
+                      aria-hidden="true"
+                      style="color:#000000;"
+                      popover-placement="left"
+                      popover-trigger="'mouseenter'"
+                      data-container="body"
+                      uib-popover="Enter word(s) to search for polls."
+                    ></i>
+
+
+                  </div>
+                  <h5>
+                    <div class="input-group">
+
+                      <input type="text" class="form-control" id="query" placeholder="Enter query"
+                      ng-model="searchPollForm.query" validator="aliasSearch">
+
+                      <span class="input-group-btn">
+                      <button type="submit" ng-disabled="!searchPollForm.$valid" class="btn btn-infinity" ng-click="$nextStep()"><i class="fa fa-search"
+                      aria-hidden="true"></i>
+                      </span>
+
+                  </div>
+                </h5>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

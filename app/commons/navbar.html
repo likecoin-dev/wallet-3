@@ -1,0 +1,142 @@
+
+<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle" ng-init="isCollapsed=true"
+                    ng-click="isCollapsed = !isCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a ui-sref="client.transactions" class="navbar-brand">
+                <img src="images/logo_nav.png" style="margin-left:40px;margin-top:-10px;height:40px;">
+            </a>
+
+        </div>
+
+        <div class="navbar-collapse collapse" uib-collapse="isCollapsed">
+
+            <ul class="nav navbar-nav pull-right" style="margin-right:40px">
+
+              <span ng-controller="GlobalNavbar" ng-show="setTestNet()">
+                <span class="btn btn-danger btn-md navbar-btn pull-left" type="label" style="margin-right:5px;"
+                popover-placement="bottom"
+                   popover-trigger="'mouseenter'" uib-popover="You are connected to TESTNET" >
+                  TESTNET
+                </span>
+              </span>
+
+                <a class="btn btn-default btn-md navbar-btn pull-left" type="button"  href="http://forum.infinity-economics.org" target="_blank" style="margin-right:5px;">
+                  <i class="fa fa-info-circle" aria-hidden="true" popover-placement="bottom"
+                     popover-trigger="'mouseenter'" uib-popover="Forum" style="color:#f57c00;width:15px;">
+                  </i>
+                </a>
+
+                <li ui-sref-active="active" class="">
+
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openSendTokenModal()" ng-controller="AccountMainCtrl" ng-disabled="false">
+                    <i class="fa fa-eur" aria-hidden="true" popover-placement="bottom"
+                       popover-trigger="'mouseenter'" uib-popover="Send Token" style="color:#616161;width:15px;">
+                    </i>
+                  </button>
+
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openSendMessageModal()" ng-controller="MessagesCtrl" ng-disabled="false">
+                    <i class="fa fa-envelope-o" aria-hidden="true" popover-placement="bottom"
+                       popover-trigger="'mouseenter'" uib-popover="Send Message" style="color:#616161;">
+                    </i>
+                  </button>
+
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openSendAssetModal()" ng-controller="AssetsMainCtrl" ng-disabled="false">
+                    <i class="fa fa-bar-chart" aria-hidden="true" popover-placement="bottom"
+                       popover-trigger="'mouseenter'" uib-popover="Send Assets" style="color:#616161;">
+                    </i>
+
+                  </button>
+
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openSendCurrencyModal()" ng-controller="CurrenciesMainCtrl" ng-disabled="false">
+                    <i class="fa fa-random" aria-hidden="true" popover-placement="bottom"
+                       popover-trigger="'mouseenter'" uib-popover="Send Currency" style="color:#616161;">
+                    </i>
+                  </button>
+
+                </li>
+
+                <li class="dropdown pointer" style="" href='' uib-dropdown>
+                    <button class="btn btn-default btn-md navbar-btn dropdown-toggle" uib-dropdown-toggle style="margin-left:5px;margin-right:5px;">
+
+                        <i class="fa fa-calculator" aria-hidden="true" popover-placement="bottom"
+                           popover-trigger="'mouseenter'" uib-popover="Tools" style="color:#616161;"></i>
+
+                        &nbsp; <b class="caret"></b>
+                    </button>
+                    <ul class="dropdown-menu" uib-dropdown-menu ng-controller="ToolsMainCtrl">
+
+                        <li role="menuitem"><a ng-click="openTransactionTypeModal()"> <i class="fa fa-info-circle"
+                                                                                         aria-hidden="true"
+                                                                                         style="width:20px;"></i> &nbsp;
+                            Transaction Types </a></li>
+                        <li role="menuitem"><a ng-click="openServiceFeesModal()"> <i class="fa fa-usd"
+                                                                                     aria-hidden="true"
+                                                                                     style="width:20px;"></i> &nbsp;
+                            Service Fees </a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a ng-click="openGenerateTokenModal()"> <i class="fa fa-user-secret"
+                                                                                       aria-hidden="true"
+                                                                                       style="width:20px;"></i> &nbsp;
+                            Generate Signature </a></li>
+                        <li role="menuitem"><a ng-click="openValidateTokenModal()"> <i class="fa fa-check"
+                                                                                       aria-hidden="true"
+                                                                                       style="width:20px;"></i> &nbsp;
+                            Validate Signature </a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a ng-click="openTransactionParseModal()"> <i class="fa fa-tasks"
+                                                                                          aria-hidden="true"
+                                                                                          style="width:20px;"></i>
+                            &nbsp; Parse Transaction </a></li>
+                        <li role="menuitem"><a ng-click="openTransactionBroadcastModal()"> <i class="fa fa-wifi"
+                                                                                              aria-hidden="true"
+                                                                                              style="width:20px;"></i>
+                            &nbsp; Broadcast Transaction </a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a ng-click="openCalculateHashModal()"> <i class="fa fa-hashtag"
+                                                                                       aria-hidden="true"
+                                                                                       style="width:20px;"></i> &nbsp;
+                            Calculate Hash </a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a ng-click="openChainStatisticsModal()"> <i class="fa fa-line-chart"
+                                                                                         aria-hidden="true"
+                                                                                         style="width:20px;"></i> &nbsp;
+                            Chain Statistics </a></li>
+                        <li class="divider"></li>
+                        <li role="menuitem"><a ng-click="openUserGuideModal()"> <i class="fa fa-user" aria-hidden="true"
+                                                                                   style="width:20px;"></i> &nbsp; User
+                            Guide </a></li>
+
+                    </ul>
+                </li>
+
+                <li ui-sref-active="active" class="">
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openAddressBookModal()" ng-controller="BaseCtrl" ng-disabled="false">
+                    <i class="fa fa-user-circle" aria-hidden="true" popover-placement="bottom"
+                       popover-trigger="'mouseenter'" uib-popover="Bookmarks" style="color:#616161;"></i>
+                  </button>
+
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openOptionsModal()" ng-controller="BaseCtrl" ng-disabled="false">
+                    <i class="fa fa-cog" aria-hidden="true" popover-placement="bottom"
+                     popover-trigger="'mouseenter'" uib-popover="Options" style="color:#616161;"></i>
+                   </button>
+
+                  <button class="btn btn-default btn-md navbar-btn" type="button" ng-click="openSignOutModal()" ng-controller="LoginCtrl" ng-disabled="false">
+                    <i class="fa fa-power-off" aria-hidden="true" popover-placement="bottom"
+                       popover-trigger="'mouseenter'" uib-popover="SignOut" style="color:#616161;"></i>
+                  </i></button>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

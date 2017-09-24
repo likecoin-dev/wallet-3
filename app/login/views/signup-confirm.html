@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <div class="col-md-12">
+                <br>
+
+                <strong> Passphrase </strong> <br>
+                <h4>
+                    <input type="text" class="form-control" id="secret" placeholder=""
+                           ng-model="confirmSecret">
+                </h4>
+
+                <hr>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;
+                Make sure that you keep the passphrase safe. If you lose your passphrase later on, your
+                account can't be restored and all your funds will be lost.
+                <strong> On your first sign in compare the account address shown in account details with the one you
+                    have written down during this new account creation and verify they match. </strong>
+                <hr>
+
+                <a class="btn btn-infinity btn-md pull-right" style="" ng-click="confirmAndLogin(confirmSecret)"> CONFIRM
+                    AND LOGIN </a>
+
+            </div>
+        </div>
+    </div>
+</div>

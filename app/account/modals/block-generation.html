@@ -1,0 +1,139 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Block Generation
+    </h3>
+
+</div>
+
+<div>
+
+    <div class="modal-body"  ng-init="alertInit('blockGeneration')">
+
+      <br>
+
+        <div ng-controller="AlertDemoCtrl">
+            <script type="text/ng-template" id="alert.html">
+                <div ng-transclude></div>
+            </script>
+
+            <div uib-alert ng-repeat="alert in alerts.blockGeneration" ng-class="'alert-' + (alert.type || 'warning')"
+                 close="closeAlert($index,'blockGeneration')">{{alert.msg}}
+            </div>
+        </div>
+
+        <div class="container-fluid" ng-init="displayNotificationAlert()">
+
+            <div class="col-md-6">
+                <div class="ucsb">
+                  Local Node Available?
+
+                    &nbsp;
+                    <i
+                      class="fa fa-question-circle-o"
+                      aria-hidden="true"
+                      style="color:#000000;"
+                      popover-placement="left"
+                      popover-trigger="'mouseenter'"
+                      data-container="body"
+                      uib-popover="To generate blocks your passphrase is used to sign blocks. For security reasons block generation is only available on local nodes."
+                    ></i>
+
+
+                </div>
+                <h4> <strong> <div compile="hasLocal|isEnabled" style="margin-top:0px;"> </div> </strong> </h4>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="ucsb">
+                  Block Generation Status
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="The block generation status on your local node."
+                  ></i>
+
+
+                </div>
+
+                <h4> <strong> <div compile="generationStatus"> </div> </strong> </h4>
+
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12">
+
+                <form name="blockGenerationForm">
+
+                    <div class="ucsb">
+                      Secret Phrase
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="Ensure you are running a local node before enter your passphrase to prevent security risks. You can switch over anytime to a local node by choosing LOCAL_HOST for connection mode in options."
+                      ></i>
+
+
+                    </div>
+
+                    <br>
+
+                    <div class="input-group">
+
+                        <input type="password" class="form-control pull-left"
+                               placeholder="Type in your secret phrase" validator="required"
+                               ng-model="blockGenerationForm.secretPhrase">
+
+
+                        <span class="input-group-btn">
+
+                <button class="btn btn-default" ng-disabled="hasLocal===false || !blockGenerationForm.$valid"
+                        ng-click="runBlockGeneration(0)"> <i class="fa fa-plug" aria-hidden="true"></i></button>
+                <button ng-disabled="hasLocal===false || !blockGenerationForm.$valid" type="button" class="btn btn-default" ng-click="runBlockGeneration(2)"> <i class="fa fa-stop"
+                                                                                                   aria-hidden="true"></i> </button>
+                <button ng-disabled="hasLocal===false || !blockGenerationForm.$valid" class="btn btn-default" ng-click="runBlockGeneration(1)"> <i class="fa fa-play"
+                                                                                                   aria-hidden="true"></i> </button>
+              </span>
+                    </div>
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+    <br>
+    <div class="modal-footer modal-default">
+        <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()" autofocus><i class="fa fa-times"
+                                                                                                  aria-hidden="true"></i>
+        </button>
+    </div>
+
+</div>

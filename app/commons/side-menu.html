@@ -1,0 +1,410 @@
+
+<div class="col-lg-2">
+    <uib-accordion close-others="true">
+
+        <div uib-accordion-group class="panel-default" ng-init="status1 = {open: true}" is-open="status1.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+
+                <i class="fa fa-credit-card" aria-hidden="true" style="width:30px;" ></i>&nbsp;Account
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status1.open, 'fa-angle-right': !status1.open}"></i>
+            </uib-accordion-heading>
+
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ng-disabled="false" ng-controller="AccountMainCtrl" ng-click="openSendTokenModal()">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Send Token</a>
+            </row>
+
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref-active="active" ui-sref="client.signedin.account.transactions">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Transactions </a>
+            </row>
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;" ng-init=""
+                    ui-sref="client.signedin.account.details">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Details</a>
+            </row>
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref-active="active" ui-sref="client.signedin.account.pending">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Pending </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSetAccountModal()" ng-controller="AccountMainCtrl">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Set Info </a>
+            </row>
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSearchAccountModal()" ng-controller="AccountMainCtrl">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Search Info </a>
+            </row>
+
+            <row>
+                <a type="button" class="btn btn-infinity btn-md"
+                        style="text-align:left;width: 100%;margin-bottom:5px;" ng-click="isCollapsed = !isCollapsed">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Advanced
+                </a>
+            </row>
+
+            <div uib-collapse="!isCollapsed">
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width: 95%;margin-bottom:5px;"
+                        ui-sref-active="active" ui-sref="client.signedin.account.control">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Control </a>
+                </row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width: 95%;margin-bottom:5px;"
+                        ng-click="openBalanceLeasingModal()" ng-controller="AccountMainCtrl">
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Balance Leasing </a></row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width: 95%;margin-bottom:5px;"
+                        ui-sref="client.signedin.account.lessors">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Lessors </a>
+                </row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width: 95%;margin-bottom:5px;"
+                        ui-sref="client.signedin.account.properties">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Properties </a>
+                </row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width: 95%;margin-bottom:5px;"
+                        ng-click="openBlockGenerationModal()" ng-controller="AccountMainCtrl">
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp;Block Generation </a>
+                </row>
+
+            </div>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status2 = {open: false}" is-open="status2.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+
+                <i class="fa fa-envelope-o" aria-hidden="true" style="width:30px;" > </i>&nbsp;Messages
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status2.open, 'fa-angle-right': !status2.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.messages.mymessages"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Messages  </a></row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSendMessageModal()" ng-controller="MessagesCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Send Message </a></row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status3 = {open: false}" is-open="status3.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+
+                <i class="fa fa-share-alt" aria-hidden="true" style="width:30px;" > </i>&nbsp;Aliases
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status3.open, 'fa-angle-right': !status3.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.aliases.myaliases"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Aliases</a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.aliases.openoffers"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Open Sell Offers </a></row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.aliases.publicoffers"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Public Buy Offers </a></row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.aliases.privateoffers"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Private Buy Offers  </a></row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSetAliasModal()" ng-controller="AliasesMainCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Register Alias</a></row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSearchAliasModal()" ng-controller="AliasesMainCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;Search Alias</a></row>
+
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status4 = {open: false}" is-open="status4.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+
+                <i class="fa fa-signal" aria-hidden="true" style="width:30px;" > </i>&nbsp;Voting
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status4.open, 'fa-angle-right': !status4.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md text-left" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.polls.polls"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; All Polls  </a></row>
+            <row><a class="btn btn-default btn-md text-left" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.polls.mypolls"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; My Polls  </a></row>
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openCreatePollModal()" ng-controller="PollsMainCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; Create Poll</a></row>
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSearchPollModal()" ng-controller="PollsMainCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; Search Polls </a></row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status5 = {open: false}" is-open="status5.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+
+                <i class="fa fa-bar-chart" aria-hidden="true" style="width:30px;" > </i>&nbsp;Assets
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status5.open, 'fa-angle-right': !status5.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.assets.assets"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  All Assets  </a></row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.assets.myassets"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  My Assets </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.assets.openorders"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  My Open Orders</a>
+            </row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.assets.mytrades"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  My Trades </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.assets.lasttransfers"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  My Transfers </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.assets.lasttrades"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  Last Trades </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openIssueAssetModal()" ng-controller="AssetsMainCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  Issue Asset</a></row>
+
+            <row><a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSearchAssetModal()" ng-controller="AssetsMainCtrl"> <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp;  Search Asset </a></row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status6 = {open: false}" is-open="status6.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+
+                <i class="fa fa-random" aria-hidden="true" style="width:30px;" > </i>&nbsp;Currencies
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status6.open, 'fa-angle-right': !status6.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.currencies.currencies">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp;  All Currencies  </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.currencies.mycurrencies">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; My Currencies</a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.currencies.myoffers">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; My Open Offers </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.currencies.myexchanges">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; My Exchanges </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.currencies.mytransfers">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; My Transfers </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.currencies.exchanges">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; Last Exchanges </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openIssueCurrencyModal()" ng-controller="CurrenciesMainCtrl">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; Issue Currency</a>
+            </row>
+
+            <row><a class="btn btn-default btn-md " style="text-align:left;width: 100%;margin-bottom:5px;"
+                    ng-click="openSearchCurrencyModal()" ng-controller="CurrenciesMainCtrl"> <i
+                    class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; Search Currency</a>
+            </row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status7 = {open: false}" is-open="status7.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+                <i class="fa fa-users" aria-hidden="true" style="width:30px;" ></i>&nbsp;Crowdfunding
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status7.open, 'fa-angle-right': !status7.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md  disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                ui-sref="client.signedin.crowdfunding.allcampaigns" >
+                <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; All Campaigns </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md  disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+              ui-sref="client.signedin.crowdfunding.mycampaigns" >
+              <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; My Campaigns  </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md  disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+              ng-click="openCreateCampaignModal()" ng-controller="CrowdfundingMainCtrl">
+              <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; Create Campaign  </a>
+            </row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status9 = {open: false}" is-open="status9.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+                <i class="fa fa-clock-o" aria-hidden="true" style="width:30px;" ></i>&nbsp;Subscriptions
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status9.open, 'fa-angle-right': !status9.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md  disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                ui-sref="client.signedin.subscription.mysubscriptions" ng-disabled="false" >
+                <i class="fa fa-angle-right" aria-hidden="true"></i> &nbsp; My Subscriptions  </a>
+            </row>
+
+            <row><a class="btn btn-default btn-md  disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                ng-click="openCreateSubscriptionModal()" ng-controller="SubscriptionsMainCtrl" ng-disabled="false" >
+                <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; Create Subscription  </a>
+            </row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status10 = {open: false}" is-open="status10.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+                <i class="fa fa-handshake-o" aria-hidden="true" style="width:30px;" ></i>&nbsp;Escrow
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status10.open, 'fa-angle-right': !status10.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md  disabled"  style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="client.signedin.escrow.myescrow" ng-disabled="false" > <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; My Escrow  </a></row>
+
+            <row><a class="btn btn-default btn-md  disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ng-click="openCreateEscrowModal()" ng-controller="EscrowMainCtrl" ng-disabled="false" > <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; Create Escrow  </a></row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status8 = {open: false}" is-open="status8.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+                <i class="fa fa-user-secret" aria-hidden="true" style="width:30px;" ></i>&nbsp;Shuffling
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status8.open, 'fa-angle-right': !status8.open}"></i>
+            </uib-accordion-heading>
+
+              <row><a class="btn btn-default btn-md disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                ui-sref="#" >
+                <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; All Shufflings  </a>
+              </row>
+
+              <row><a class="btn btn-default btn-md disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                ui-sref="#" >
+                <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; My Shufflings</a>
+              </row>
+
+              <row><a class="btn btn-default btn-md disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                ui-sref="#" > <i class="fa fa-angle-right" aria-hidden="true">
+                </i>&nbsp; Create Shuffling </a>
+              </row>
+
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status11 = {open: false}" is-open="status11.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+                <i class="fa fa-gears" aria-hidden="true" style="width:30px;" ></i>&nbsp;AT
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status11.open, 'fa-angle-right': !status11.open}"></i>
+            </uib-accordion-heading>
+
+            <row><a class="btn btn-default btn-md disabled" style="text-align:left;width:100%;margin-bottom:5px;"
+                    ui-sref="#" ng-disabled="true" > <i class="fa fa-angle-right" aria-hidden="true"></i>
+                &nbsp; Info  </a></row>
+        </div>
+
+        <div uib-accordion-group class="panel-default" ng-init="status12 = {open: false}" is-open="status12.open" style="background-color:#F4F4F4;" >
+
+            <uib-accordion-heading>
+                <i class="fa fa-navicon" aria-hidden="true" style="width:30px;" > </i>&nbsp;Extensions
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status12.open, 'fa-angle-right': !status12.open}"></i>
+            </uib-accordion-heading>
+
+            <row>
+                <a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                        ui-sref="client.signedin.extensions.welcome" ng-disabled="false">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; Overview
+                </a>
+            </row>
+
+            <row>
+                <a type="button" class="btn btn-infinity  btn-md"
+                        style="text-align:left;width: 100%;margin-bottom:5px;" ng-click="isCollapsed = !isCollapsed">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>  &nbsp;
+                    Chain Viewer
+                </a>
+            </row>
+
+            <div uib-collapse="!isCollapsed">
+
+                <row><a class="btn btn-default btn-md text-left" style="text-align:left;width:95%;margin-bottom:5px;"
+                        ui-sref="client.signedin.chainviewer.blocks" ui-sref-active="active"> <i class="fa fa-angle-right"
+                                                                                                 aria-hidden="true"></i>
+                    &nbsp;Blocks </a></row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width:95%;margin-bottom:5px;"
+                        ui-sref="client.signedin.chainviewer.transactions" ui-sref-active="active"> <i class="fa fa-angle-right"
+                                                                                                       aria-hidden="true"></i>
+                    &nbsp;Transactions</a>
+                </row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width:95%;margin-bottom:5px;"
+                        ui-sref="client.signedin.chainviewer.unconfirmed" ui-sref-active="active"> <i class="fa fa-angle-right"
+                                                                                                aria-hidden="true"></i>
+                    &nbsp;Unconfirmed</a>
+                </row>
+
+                <row><a class="btn btn-default btn-md" style="text-align:left;width:95%;margin-bottom:5px;"
+                        ui-sref="client.signedin.chainviewer.peers" ui-sref-active="active"> <i class="fa fa-angle-right"
+                                                                                                aria-hidden="true"></i>
+                    &nbsp;Peers</a>
+                </row>
+
+            </div>
+
+            <row>
+                <a class="btn btn-default btn-md" style="text-align:left;width: 100%;margin-bottom:5px;"
+                        ui-sref="client.signedin.macapviewer.macap" ng-disabled="false">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>&nbsp; MaCap Viewer
+                </a>
+            </row>
+
+
+
+        </div>
+
+    </uib-accordion>
+</div>

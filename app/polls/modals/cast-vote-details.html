@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <br>
+
+            <form name="castVoteForm">
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Poll Name
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The poll name"
+                      ></i>
+
+                    </div>
+                    <h5> <div class="dont-break-out"> {{ castVoteForm.poll.name }} </div></h5>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Poll Description
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The poll description"
+                      ></i>
+
+                    </div>
+                    <h5> <div class="dont-break-out"> {{ castVoteForm.poll.description }} </div></h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="ucsb"> Available Options to Choose <small> ( Max. {{ castVoteForm.poll.maxNumberOfOptions  }} Option ) </small>
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="You can choose up to {{ castVoteForm.poll.maxNumberOfOptions  }} option(s) for this poll"
+                      ></i>
+
+                    </div>
+                    <br>
+
+                    <div ng-repeat="option in options" class="checkbox checkbox-default" >
+
+                      <div class="col-md-6">
+                        <input type="checkbox" checklist-model="castVoteForm.options" checklist-value="option" id="option-{{$index}}">
+                        &nbsp;
+                        <label for="option-{{$index}}"> <div class="dont-break-out"> {{option}} </div> </label>
+                      </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                  <div class="col-md-12">
+                    <h5> <button ng-disabled="!castVoteForm.$valid" class="btn btn-infinity pull-right" ng-click="nextStep()">
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i>  </button></h5>
+                  </div>
+
+ 
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+<div ng-init="initStep1()"></div>

@@ -1,0 +1,140 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="centering text-left">
+
+
+            <br>
+
+            <form name="sendTokenForm">
+
+                <div class="col-md-6">
+                    <div class="ucsb">
+                      Recipient
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The recipient account to send token to"
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+                    <span class="input-group-addon btn btn-default"
+                          ng-click="searchAliases (sendTokenForm.recipientRS,sendTokenForm,'recipientRS')" ng-controller="BaseCtrl"
+                          popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Enter an alias connected to an account to get the accout Id.">
+                      <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </span>
+                            <input type="text" class="form-control" placeholder="XIN-____-____-____-____"
+                                   ng-model="sendTokenForm.recipientRS" validator="required" id="recipientRS">
+                            <span class="input-group-addon btn btn-default" ng-click="openAddressBookModal()"
+                                  popover-placement="left" popover-trigger="'mouseenter'"
+                                  uib-popover="Open your bookmarks to insert an account id">
+                      <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </span>
+                        </div>
+                    </h5>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="ucsb">
+                      Amount
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The amount you like to send to the recipient account."
+                      ></i>
+
+                    </div>
+
+                    <h4 class="input-group">
+                        <input type="number" class="form-control" id="amount"
+                               placeholder="Type in the amount to send" validator="required" min="0"
+                               ng-model="sendTokenForm.amount">
+
+                        <span class="input-group-addon" id="addon-amount"> XIN  </span>
+                    </h4>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+
+                <div class="col-md-12">
+
+                    <button ng-disabled="!sendTokenForm.$valid" class="btn btn-infinity pull-right"
+                            ng-click="$nextStep()"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+
+                    <button type="button" class="btn btn-default" ng-click="addMessage = !addMessage">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;Add private message
+
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="addPubKey = !addPubKey">
+                        <i class="fa fa-key" aria-hidden="true"></i> &nbsp;Add recipient public key
+
+                    </button>
+                    <br><br>
+
+                    <div uib-collapse="!addMessage" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well well-lg">
+
+                            <div class="form-group">
+
+                                <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                                     uib-popover="For message encryption the recipient public key needs to be known. This is not the case for accounts without any outbound transaction.">
+                                    Message
+                                    <small> (max. 160 chars)</small>
+                                </div>
+
+                                <br>
+
+                                <input type="text" class="form-control" id="message" placeholder=""
+                                       ng-model="sendTokenForm.message">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div uib-collapse="!addPubKey" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well well-lg">
+                            <div class="form-group">
+                                <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                                     uib-popover="Additional security for brand new accounts without any outbound transaction and mandatory for encrypted messages to accounts without a known public key.">
+                                    Recipient Public Key
+                                    <small><small> (Optional)</small></small>
+                                </div>
+                                <br>
+                                <input type="text" class="form-control" id="message" placeholder=""
+                                       ng-model="sendTokenForm.pubkey">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+              <div ng-init="initStep1()"></div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,381 @@
+<div class="col-lg-10"  ng-init="getAccountDetails()">
+
+    <cc-auto-refresh-fn
+            refresh-fn="getAccountDetails()"
+            refresh-interval="options.REFRESH_INTERVAL_MILLI_SECONDS"
+            refresh-paused="!options.AUTO_UPDATE"
+    >
+    </cc-auto-refresh-fn>
+
+    <uib-accordion close-others="false">
+
+        <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open"
+             style="background-color:#FFFFFF;">
+
+            <uib-accordion-heading>
+                Account Details
+                <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+            </uib-accordion-heading>
+
+
+            <div class="col-lg-2 col-md-2 col-sm-2">
+
+                <div class="row">
+                    <uib-accordion close-others="true">
+                        <div uib-accordion-group class="panel-default" ng-init="status = {open: true}"
+                             is-open="status.open" style="background-color:#FFFFFF;">
+                            <uib-accordion-heading>
+                                <i class="fa fa-qrcode" aria-hidden="true"> </i>&nbsp; QR Code
+                                <i class="pull-right fa"
+                                   ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                            </uib-accordion-heading>
+
+                            <div class="text-center">
+                                <qr type-number="8" correction-level="'M'" size="125" input-mode="'8bit'"
+                                    text="account.accountRS"
+                                    image="true" ng-if="account.accountRS"></qr>
+                            </div>
+
+                        </div>
+                    </uib-accordion>
+                </div>
+
+                <cc-auto-refresh-fn
+                        refresh-fn="getChart()"
+                        refresh-interval="options.REFRESH_INTERVAL_MILLI_SECONDS"
+                        refresh-paused="!options.AUTO_UPDATE"
+                >
+                </cc-auto-refresh-fn>
+
+                <div class="row">
+                    <uib-accordion close-others="true">
+                        <div uib-accordion-group class="panel-default" ng-init="status = {open: false}"
+                             is-open="status.open" style="background-color:#FFFFFF;">
+                            <uib-accordion-heading>
+                                <i class="fa fa-pie-chart" aria-hidden="true"> </i>&nbsp; Portfolio
+                                <i class="pull-right fa"
+                                   ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                            </uib-accordion-heading>
+
+                            <div class="panel panel-default " ng-init="getChart()">
+                                <br>
+
+                                <nvd3 options="chartOptions" data="accountHoldingData"></nvd3>
+
+                            </div>
+
+                        </div>
+                    </uib-accordion>
+                </div>
+
+                <div class="row">
+
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-10 col-md-10">
+
+                <div class="col-lg-9">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="This is your unique account ID"> Account Address
+                    </div>
+                    <h4> {{account.accountRS}} </h4>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Standard or Multisignature account type."> Account Type
+                    </div>
+                    <h5>
+                        <div compile="multisig"></div>
+                    </h5>
+                </div>
+
+
+                <div class="col-lg-12">
+                    <hr/>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="This is your confirmed account balance."> Confirmed Balance
+                    </div>
+                    <h4> {{account.balanceTQT | amountTQT }}
+                        <small> XIN</small>
+                    </h4>
+
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="This balance includes amounts on pending orders. For instance buy/sell orders.">
+                        Unconfirmed Balance
+
+                    </div>
+
+                    <h4> {{account.unconfirmedBalanceTQT | amountTQT}}
+                        <small> XIN</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="This balance is used for block generation calculation and shows only amounts with +1'440 confirmations. This is the balance used also for balance leasing.">
+                        Effective Balance
+                    </div>
+                    <h4> {{account.effectiveBalance | amountTKN }}
+                        <small> XIN</small>
+                    </h4>
+                </div>
+
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="This balance shows your accumulated block fee reward on generated blocks by this account.">
+                        Earned Fees Balance
+                    </div>
+                    <h4> {{account.forgedBalanceTQT | amountTQT }}
+                        <small> XIN</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-12">
+                    <hr/>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Assets balance based on the last trade for each asset this accounts holds.">
+                        Balance Assets
+                    </div>
+                    <h4>
+                        {{accountAssetXmcValue|numericalString}}
+                        <small> XIN</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Currencies balance based on the last trade for each currency this accounts holds.">
+                        Balance Currencies
+                    </div>
+                    <h4>
+                        {{accountCurrencyXmcValue|numericalString}}
+                        <small> XIN</small>
+                    </h4>
+                </div>
+
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="The total balance including assets and currencies fior this acocunt.">
+                        Balance Total
+                    </div>
+                    <h4> {{((account.balanceTQT|quantToAmount)+accountCurrencyXmcValue+accountAssetXmcValue ) |
+                        numericalString }}
+                        <small> XIN</small>
+                    </h4>
+                </div>
+
+
+                <div class="col-lg-3">
+                </div>
+
+                <div class="col-lg-12">
+                    <hr/>
+                </div>
+
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Fiat money equivalent, based on last completed trade on OTC exchange."> Fiat
+                        Balance Account
+                    </div>
+                    <h4> {{account.balanceTQT |quantToAmount| fiatUSD|numericalString }}
+                        <small> USD</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Fiat money equivalent, based on last completed trade on OTC exchange."> Fiat
+                        Balance Assets
+                    </div>
+                    <h4>
+                        {{accountAssetXmcValue |fiatUSD|numericalString}}
+                        <small> USD</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Fiat money equivalent, based on last completed trade on OTC exchange"> Fiat
+                        Balance Currencies
+                    </div>
+                    <h4>
+                        {{accountCurrencyXmcValue|fiatUSD|numericalString}}
+                        <small> USD</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="Fiat money equivalent, based on last completed trade on OTC exchange"> Fiat
+                        Balance Total
+                    </div>
+                    <h4> {{((account.balanceTQT|quantToAmount)+accountCurrencyXmcValue+accountAssetXmcValue ) |
+                        fiatUSD|numericalString }}
+                        <small> USD</small>
+                    </h4>
+                </div>
+
+                <div class="col-lg-12">
+                    <hr/>
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="The public account name for this account."> Account Name
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{account.name | notSet }}</div>
+                    </h5>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                         uib-popover="The public account description for this account."> Account Description
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{account.description | notSet}}</div>
+                    </h5>
+
+                </div>
+
+                <div class="col-lg-12">
+                    <hr/>
+                </div>
+
+                <div class="col-lg-12">
+
+                    <button type="button" class="btn btn-default btn-md" ng-click="PubKey = !PubKey"><i
+                            class="fa fa-key" aria-hidden="true"></i> &nbsp; Public Key
+                    </button>
+                    &nbsp;
+                    <button type="button" ng-disabled="!leasesDetected" class="btn btn-default btn-md"
+                            ng-click="Leases = !Leases"><i
+                            class="fa fa-external-link-square" aria-hidden="true"></i> &nbsp;Balance Leases
+                    </button>
+
+                    &nbsp;
+                    <button type="button" ng-disabled="!controlDetected" class="btn btn-default btn-md"
+                            ng-click="Control = !Control"><i
+                            class="fa fa-users" aria-hidden="true"></i> &nbsp; Control Model
+                    </button>
+                    &nbsp;
+
+                    <br><br>
+                    <div uib-collapse="!PubKey" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well dont-break-out">
+
+                            {{account.publicKey | noOutbound }}
+
+                        </div>
+                    </div>
+
+                    <div uib-collapse="!Leases" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well dont-break-out">
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Account</th>
+                                    <th>Height From</th>
+                                    <th>Height To</th>
+                                    <th>Duration</th>
+                                </tr>
+                                </thead>
+
+                                <tr>
+                                    <td>
+                                        <div compile="account.currentLesseeRS |searchTerm"></div>
+                                    </td>
+                                    <td>{{ account.currentLeasingHeightFrom }}</td>
+                                    <td>{{ account.currentLeasingHeightTo }}</td>
+                                    <td>{{ account.currentLeasingHeightTo - account.currentLeasingHeightFrom }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div compile="account.nextLesseeRS |searchTerm"></div>
+                                    </td>
+                                    <td>{{ account.nextLeasingHeightFrom }}</td>
+                                    <td>{{ account.nextLeasingHeightTo }}</td>
+                                    <td>{{ account.nextLeasingHeightTo - account.nextLeasingHeightFrom }}</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <div uib-collapse="!Control" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well dont-break-out">
+
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th> Key</th>
+                                    <th> Value</th>
+                                </tr>
+                                </thead>
+
+                                <tr>
+                                    <td> Model</td>
+                                    <td> {{ controlVotingModel | controlModel}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td> Quorum</td>
+                                    <td> {{ controlQuorum }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td> Max. Fees</td>
+                                    <td> {{ maxFees }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td> Min. Approval Balance</td>
+                                    <td> {{ minBalance }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td> Whitelisted Accounts</td>
+                                    <td> {{ WhitelistAccountRS }}</td>
+                                </tr>
+
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </uib-accordion>
+    <div class="footer-padding"></div>
+</div>

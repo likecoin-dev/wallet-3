@@ -1,0 +1,81 @@
+
+<style>
+  .modal .modal-dialog { max-width: 700px; }
+</style>
+
+<div class="modal-header modal-default text-center" ng-init="showResult()" >
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;"> Account Details </h3>
+
+</div>
+
+<div class="modal-body">
+
+  <br>
+
+  <div class="container-fluid">
+
+      <div class="col-md-6">
+        <div class="ucsb"> Address </div>
+        <h5> </strong> {{account.accountRS}} </strong> </h5>
+      </div>
+
+      <div class="col-md-6">
+        <div class="ucsb"> Balance </div>
+        <h5> </strong> {{account.balanceTQT|amountTQT}} </strong> <small> XIN </small> </h5>
+      </div>
+
+      <div class="col-md-12"> <hr/> </div>
+
+      <div class="col-md-6">
+        <div class="ucsb"> Name </div>
+        <h5> <div class="dont-break-out">{{account.name | notSet }} </div> </h5>
+
+      </div>
+
+      <div class="col-md-6">
+        <div class="ucsb"> Description </div>
+        <h5> <div class="dont-break-out"> {{account.description | notSet  }}</div> </h5>
+
+      </div>
+
+
+      <div class="col-md-12"> <hr/> </div>
+
+      <div class="col-md-12">
+
+        <button type="button" class="btn btn-default btn-md" ng-click="PubKey = !PubKey"> <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Public Key </button> &nbsp;
+        <button type="button" class="btn btn-default btn-md" ng-click="qrcode = !qrcode"> <i class="fa fa-qrcode" aria-hidden="true"></i> &nbsp; QR Code </button>
+
+        <br><br>
+        <div uib-collapse="!PubKey" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+          <div class="well well-lg dont-break-out">
+
+          {{account.publicKey | noOutbound }}
+
+          </div>
+        </div>
+
+        <div uib-collapse="!qrcode" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+          <div class="well well-lg dont-break-out">
+
+            <qr type-number="8" correction-level="'M'" size="150" input-mode="'8bit'" text="accountRs"
+              image="true" ng-if="accountRs"></qr>
+
+          </div>
+        </div>
+
+      </div>
+
+</div>
+
+</div>
+
+<div class="modal-footer modal-default">
+
+  <button ng-disabled="" class="btn btn-default pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+
+</div>

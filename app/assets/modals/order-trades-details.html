@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <br>
+            <div class="col-md-12">
+                <form name="orderTradesForm" ng-submit="onSubmit()">
+
+                    <div class="ucsb" for="query"> Transaction Id
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The transaction id."
+                        ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="query" placeholder="Enter order Id"
+                                   ng-model="orderTradesForm.orderid" validator="required" >
+                            <span class="input-group-btn">
+                      <button type="submit" ng-disabled="!orderTradesForm.$valid" class="btn btn-infinity"
+                              ng-click="$nextStep()">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                          </button>
+                      </span>
+                        </div>
+                    </h5>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

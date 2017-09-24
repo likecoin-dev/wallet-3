@@ -1,0 +1,99 @@
+
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <div class="col-md-12">
+
+              <br>
+
+                <form name="deleteAssetForm">
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Asset Id
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The unique asset id "
+                      ></i>
+
+
+                    </div>
+                      <h5>  {{deleteAssetForm.assetId}} </h5>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="ucsb">
+                      Asset
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The asset name/ticker "
+                      ></i>
+
+                    </div>
+                      <h5> <div class="dont-break-out"> {{deleteAssetForm.asset}} </div>  </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="ucsb"> Number Shares to Delete
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The number of shares to be deleted. "
+                      ></i>
+
+                    </div>
+
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="quantity"
+                               placeholder="" validator="required"
+                               ng-model="deleteAssetForm.quantity"
+                               min="0"
+                               ng-init="deleteAssetForm.quantity=0">
+
+                        <span class="input-group-addon" id="addon-shares"> QUANTITY</span>
+                    </h5>
+
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="ucsb">  &nbsp;  </div>
+                    <h5>
+                      <button ng-disabled="!deleteAssetForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                        class="fa fa-chevron-right"
+                        aria-hidden="true"></i>
+                      </button>
+                    </h5>
+                  </div>
+
+                </form>
+
+            </div>
+        </div>
+<div ng-init="initStep1()"></div>
+
+</div>
+</div>

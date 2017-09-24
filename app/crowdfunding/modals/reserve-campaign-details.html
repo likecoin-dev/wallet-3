@@ -1,0 +1,186 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <form name="reserveCampaignForm">
+                <br>
+
+
+                <div class="col-md-6">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                      Campaign Id
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The campaign ID"
+                      ></i>
+
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{ reserveCampaignForm.currency }}</div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                      Campaign Code
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The campaign code"
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{ reserveCampaignForm.code }} </div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                      Campaign Specificaions
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The reserve supply in units, the minimum reserve per unit and the unit decimals"
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="dont-break-out">  {{ reserveCampaignForm.reserveSupply }} / {{ reserveCampaignForm.minReservePerUnitTQT | amountTQT }} / {{ reserveCampaignForm.decimals }} </div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                      Campaign Goal
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The total amount of XIN to raise for this campaign"
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="dont-break-out"> {{ reserveCampaignForm.goal }} <small>XIN</small> </div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Total Amount to Reserve
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The total amount of XIN you want to reserve"
+                      ></i>
+
+                    </div>
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="amountTotal"
+                          placeholder="0"
+                          min="1"
+                          ng-model="reserveCampaignForm.amountTotal"
+                          validator="required"
+                          ng-init="reserveCampaignForm.amountTotal=0"
+                        >
+                        <span class="input-group-addon" id="addon-amountTotal"> XIN  </span>
+                    </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Amount per Unit
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The amount per unit based on former total amount to reserve"
+                      ></i>
+
+                    </div>
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="amountUnit"
+                            placeholder="0"
+                            min="0"
+                            ng-model="reserveCampaignForm.amountUnit"
+                            validator="required"
+                            ng-readonly="true"
+                            ng-init="reserveCampaignForm.amountUnit=0"
+
+                          >
+                        <span class="input-group-addon" id="addon-amountUnit"> XIN  </span>
+                    </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12 pull right">
+
+                    <h5>
+                        <button ng-disabled="!reserveCampaignForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="$nextStep()">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                    </h5>
+                </div>
+
+
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div ng-init="initStep1()"></div>

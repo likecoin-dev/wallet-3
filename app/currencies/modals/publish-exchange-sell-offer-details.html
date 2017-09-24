@@ -1,0 +1,178 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <br>
+            <form name="publishExchangeOfferForm">
+
+
+                <div class="col-md-6">
+                    <div class="ucsb">  Ticker
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Unique ticker code."
+                        ></i>
+
+
+                    </div>
+                    <h5>  {{publishExchangeOfferForm.ticker}} </h5>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Currency Id
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Currency Id"
+                        ></i>
+
+
+                    </div>
+                    <h5>  {{publishExchangeOfferForm.currencyId}}  </h5>
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Rate
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The rate per currency unit at which you are selling."
+                        ></i>
+
+                    </div>
+
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="sellRate"
+                               placeholder="" validator="required"
+                               ng-model="publishExchangeOfferForm.sellRate">
+                        <span class="input-group-addon" id="addon-sellRate">XIN</span>
+                    </h5>
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="ucsb"> Units
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Number of currency units you want to sell."
+                        ></i>
+
+
+                    </div>
+
+                    <h5 class="input-group">
+                        <input type="number" class="form-control" id="initialSellSupply"
+                               placeholder="" validator="required"
+                               ng-model="publishExchangeOfferForm.initialSellSupply">
+                        <span class="input-group-addon" id="addon-initialSellSupply">UNITS</span>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-10">
+                    <div class="ucsb"> Expiration Height
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="Block height at which this offer expires."
+                        ></i>
+
+
+                    </div>
+
+
+
+                    <h5>
+                        <div class="input-group">
+
+
+                            <span class="input-group-addon" id="addon-amount" ng-init="getBlockChainStatus()"> <small> BLOCK : {{ currentHeight }} </small> </span>
+
+                            <input type="number" class="form-control" ng-name="period" placeholder="1440"
+                                   ng-init="publishExchangeOfferForm.expirationHeight=1440"
+                                   ng-model="publishExchangeOfferForm.expirationHeight"
+                                   ng-value="{{publishExchangeOfferForm.expirationHeight}}"
+                                   ng-min="10" ng-max="14400" min="10" max="14400" required>
+
+                            <span class="input-group-addon" id="addon-days">  <small>  {{ days }} Day(s) </small> </span>
+
+                            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="min()"> <i class="fa fa-fast-backward"
+                                                                                           aria-hidden="true"></i> </button>
+                        <button type="button" class="btn btn-default" ng-click="decrement()"> <i
+                                class="glyphicon glyphicon-minus"></i>  </button>
+                        <button type="button" class="btn btn-default" ng-click="increment()"> <i
+                                class="glyphicon glyphicon-plus"></i>  </button>
+                        <button type="button" class="btn btn-default" ng-click="max()"> <i class="fa fa-fast-forward"
+                                                                                           aria-hidden="true"></i> </button>
+                      </span>
+
+                        </div>
+                    </h5>
+
+
+
+
+                </div>
+
+                <div class="col-md-2">
+                    <div class="ucsb"> &nbsp; </div>
+                    <input type="hidden" ng-model="publishExchangeOfferForm.typeOnly" ng-init="publishExchangeOfferForm.typeOnly='SELL'">
+                    <h5>
+                        <button ng-disabled="!publishExchangeOfferForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="$nextStep()">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                    </h5>
+                </div>
+
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div ng-init="initStep1()"></div>

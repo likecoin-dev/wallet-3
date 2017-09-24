@@ -1,0 +1,184 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+
+      <br>
+        <div class="centering text-left">
+          <form name="issueCurrencyForm2">
+
+            <div class="col-md-6">
+                <div class="ucsb">  Currency Type
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="Exchangable, can be exchanged with XIN. Controllable; transfers only from, to issuer. Exchange offers allowed only from issuer."
+                  ></i>
+
+
+                </div>
+
+                <h5>
+                  <div ng-repeat="currency in currencyTypes" class="checkbox checkbox-default" >
+                      <input type="checkbox" value="{{currency}}" ng-model="issueCurrencyForm2.types[currency]" id="option-{{$index}}">
+                      <label for="option-{{$index}}">{{currency|currencyModel}}</label>
+                  </div>
+                  <span id="types"></span>
+                </h5>
+
+            </div>
+
+            <div class="col-md-6">
+              <div class="ucsb"> Currency Decimals
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The maximum allowed number of digits after the asset quantity decimal point."
+                ></i>
+
+
+
+              </div>
+              <h5 class="input-group">
+                         <input type="number" class="form-control" id="decimals" placeholder="0"
+                                ng-model="issueCurrencyForm2.decimals" validator="required"
+                                ng-init="issueCurrencyForm2.decimals=0" min="0" max="4"
+                                >
+                  <span class="input-group-addon" id="addon-initialSupply">DIGITS</span>
+              </h5>
+            </div>
+
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-6">
+              <div class="ucsb">  Initial Supply
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The initial currency supply. Multiplied by number of decimals gives the smalles currency unit to trade or transfer."
+                ></i>
+
+
+              </div>
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="initialSupply"
+                         placeholder="" validator="required" min="1"
+                         ng-model="issueCurrencyForm2.initialSupply">
+
+                  <span class="input-group-addon" id="addon-initialSupply">UNITS</span>
+              </h5>
+            </div>
+
+            <div class="col-md-6">
+              <div class="ucsb">  Total Supply
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="Total currency supply used for reservable/claimable currencies like crowdfunding token. For all other currency type total supply has to be equal to initial supply."
+                ></i>
+
+              </div>
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="maxSupply"
+                         placeholder="" validator="required" min="1"
+                         ng-readonly="true"
+                         ng-model="issueCurrencyForm2.maxSupply">
+
+                  <span class="input-group-addon" id="addon-maxSupply">UNITS</span>
+              </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div ng-show="reservable">
+
+              <div class="col-md-6">
+                <div class="ucsb">  Min Amount Per Unit </div>
+                <h5 class="input-group">
+                    <input type="number" class="form-control" id="min_amount"
+                           placeholder=""
+                           ng-model="issueCurrencyForm2.minAmount"
+                           ng-init="issueCurrencyForm2.minAmount=''"
+                           >
+
+                    <span class="input-group-addon" id="addon-minAmount">XIN</span>
+                </h5>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ucsb">  Reserve Supply </div>
+                <h5 class="input-group">
+                    <input type="number" class="form-control" id="reserveSupply"
+                           placeholder=""
+                           ng-model="issueCurrencyForm2.reserveSupply"
+                           ng-init="issueCurrencyForm2.reserveSupply=''"
+                           >
+
+                    <span class="input-group-addon" id="addon-reserveSupply">UNITS</span>
+                </h5>
+              </div>
+
+              <div class="col-md-12">
+                  <hr/>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ucsb">  Activation Height </div>
+                <h5 class="input-group">
+                    <input type="number" class="form-control" id="activHeight"
+                           placeholder=""
+                           ng-model="issueCurrencyForm2.activHeight"
+                           ng-init="issueCurrencyForm2.activHeight=0"
+                           >
+
+                    <span class="input-group-addon" id="addon-activHeight">@BLOCK</span>
+                </h5>
+              </div>
+
+            </div>
+
+            <div class="col-md-12">
+
+                  <button ng-disabled="!issueCurrencyForm2.$valid" class="btn btn-infinity pull-right"
+                          ng-click="$nextStep()">
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i> </button>
+
+                  <button ng-disabled="$isFirst()" class="btn btn-default pull-left" ng-click="$previousStep()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> </button>
+
+            </div>
+
+                </form>
+
+        </div>
+
+    </div>
+    <div ng-init="initStep1() "></div>
+</div>

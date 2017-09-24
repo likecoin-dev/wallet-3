@@ -1,0 +1,335 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+
+<div class="modal-header modal-default text-center" ng-init="loadOptions()">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Options
+    </h3>
+
+</div>
+<div class="modal-body">
+
+<div class="container-fluid">
+
+
+  <form name="optionsForm">
+
+    <div class="col-md-12">
+
+          <div ng-controller="AlertDemoCtrl" ng-init="alertInit('options')">
+              <script type="text/ng-template" id="alert.html">
+                  <div ng-transclude></div>
+              </script>
+
+              <div uib-alert ng-repeat="alert in alerts.options" ng-class="'alert-' + (alert.type || 'warning')"
+                   close="closeAlert($index,'options')">{{alert.msg}}
+              </div>
+          </div>
+
+          <uib-accordion close-others="false">
+              <div uib-accordion-group class="panel-default" ng-init="status = {open: false}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+                  <uib-accordion-heading>
+                      <i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp; Nodes and Connection
+                      <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Connection Mode
+
+
+                          &nbsp;
+                          <i
+                                  class="fa fa-question-circle-o"
+                                  aria-hidden="true"
+                                  style="color:#000000;"
+                                  popover-placement="left"
+                                  popover-trigger="'mouseenter'"
+                                  data-container="body"
+                                  uib-popover="Switch over to other nodes or a local node. AUTO mode takes a random node from top ten peer selection. LOCALHOST seeks for a local node and connects if found on MANUAL you can enter a specific node IP, your private VPS for instance and on HTTPS a SSL connection is made to a dedicated https foundation server."
+                          ></i>
+
+
+                      </div>
+                      <h5>
+
+                          <select ng-options="mode for mode in CONNECTION_MODES" id="connection-mode"
+                                  ng-model="optionsForm['CONNECTION_MODE']"
+                                  ng-change="updateConnectionMode(optionsForm)"
+                                  class="form-control"
+                                  ng-init="connection_mode=CONNECTION_MODES[0]"></select>
+
+                      </h5>
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Connect to Node
+
+                          &nbsp;
+                          <i
+                                  class="fa fa-question-circle-o"
+                                  aria-hidden="true"
+                                  style="color:#000000;"
+                                  popover-placement="left"
+                                  popover-trigger="'mouseenter'"
+                                  data-container="body"
+                                  uib-popover="Enter the node ip and port - http://yourserverip:23457 - to connect with."
+                          ></i>
+
+                      </div>
+                      <h5>
+
+                          <input type="text" class="form-control" id="node-url" placeholder=""
+                                 name="user_name"
+                                 ng-model="optionsForm['USER_NODE_URL']" validator="required,nodeUrl"
+                                 ng-disabled="optionsForm['CONNECTION_MODE']!='MANUAL'" valid-method="blur" initial-validity="true"
+                          >
+                      </h5>
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Connected to
+
+                          &nbsp;
+                          <i
+                                  class="fa fa-question-circle-o"
+                                  aria-hidden="true"
+                                  style="color:#000000;"
+                                  popover-placement="left"
+                                  popover-trigger="'mouseenter'"
+                                  data-container="body"
+                                  uib-popover="The node your are connectd"
+                          ></i>
+
+                      </div>
+                      <h5>
+                          <h4 class="form-static" ng-controller="NodeController" ng-init="init()">
+
+                            <input type="text" class="form-control" id="node-url" readonly="true" placeholder="{{connectedURL}}">
+                          </h4>
+                      </h5>
+                  </div>
+
+                  <div class="col-md-12">
+
+                      <div class="ucsb">    &nbsp; </div>
+                      <br>
+
+                      <div class="checkbox checkbox-default">
+                          <input type="checkbox" class="styled styled-primary" id="randomize-node"
+                                 ng-model="optionsForm['RANDOMIZE_NODES']" ng-true-value="1" ng-false-value="0" initial-validity="true">
+
+                          &nbsp;
+                          <label for="randomize-node"> <strong> Randomize Node Connects </strong>
+
+                              &nbsp;
+                              <i
+                                      class="fa fa-question-circle-o"
+                                      aria-hidden="true"
+                                      style="color:#000000;"
+                                      popover-placement="left"
+                                      popover-trigger="'mouseenter'"
+                                      data-container="body"
+                                      uib-popover="Randomize nodes to connect with for better privacy and loadbalancing."
+                              ></i>
+
+
+                          </label>
+
+
+                      </div>
+                  </div>
+
+                </div>
+          </uib-accordion>
+
+          <uib-accordion close-others="false">
+              <div uib-accordion-group class="panel-default" ng-init="status = {open: false}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+                  <uib-accordion-heading>
+                      <i class="fa fa-chain" aria-hidden="true"></i>&nbsp; Blocks and Confirmations
+                      <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Transaction Deadline
+
+                          &nbsp;
+                          <i
+                                  class="fa fa-question-circle-o"
+                                  aria-hidden="true"
+                                  style="color:#000000;"
+                                  popover-placement="left"
+                                  popover-trigger="'mouseenter'"
+                                  data-container="body"
+                                  uib-popover="The number of blocks until a transaction expires if not included into a block."
+                          ></i>
+
+                      </div>
+                      <h5 class="input-group">
+                          <input type="number" class="form-control" id="tx_deadline"
+                                 placeholder="Transaction deadline"
+                                 ng-model="optionsForm['DEADLINE']" min="60" max="1440" validator="required" initial-validity="true">
+
+                          <span class="input-group-addon" id="addon-units">BLOCKS</span>
+                      </h5>
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Control Height Offset
+
+                          &nbsp;
+                          <i
+                                  class="fa fa-question-circle-o"
+                                  aria-hidden="true"
+                                  style="color:#000000;"
+                                  popover-placement="left"
+                                  popover-trigger="'mouseenter'"
+                                  data-container="body"
+                                  uib-popover="Default number of blocks until a controlled transactions not approved expires."
+                          ></i>
+
+
+                      </div>
+                      <h5 class="input-group">
+                          <input type="number" class="form-control" id="future_height" placeholder="Future Height"
+                                 ng-model="optionsForm['TX_HEIGHT']" min="10" max="20160" validator="required" initial-validity="true">
+
+                          <span class="input-group-addon" id="addon-units">BLOCKS</span>
+                      </h5>
+                  </div>
+
+
+                </div>
+          </uib-accordion>
+
+          <uib-accordion close-others="false">
+              <div uib-accordion-group class="panel-default" ng-init="status = {open: false}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+                  <uib-accordion-heading>
+                      <i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp; Wallet
+                      <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+                  </uib-accordion-heading>
+
+                    <div class="col-md-4">
+                        <div class="ucsb"> Language</div>
+                        <h5>
+                            <select name="language" class="form-control" style="width:150px;;">
+                                <option value="en">English</option>
+                            </select>
+                        </h5>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="ucsb"> Refresh Interval
+
+                            &nbsp;
+                            <i
+                                    class="fa fa-question-circle-o"
+                                    aria-hidden="true"
+                                    style="color:#000000;"
+                                    popover-placement="left"
+                                    popover-trigger="'mouseenter'"
+                                    data-container="body"
+                                    uib-popover="Autorefresh default interval in milliseconds. Due to 60 seconds blocks this value is set to 60'000 ms."
+                            ></i>
+
+
+                        </div>
+                        <h5 class="input-group">
+                            <input type="number" class="form-control" id="refresh_interval"
+                                   placeholder="Page Refresh Interval"
+                                   ng-model="optionsForm['REFRESH_INTERVAL_MILLI_SECONDS']"
+                                   validator="required"
+                                   min="30000" initial-validity="true"
+                            >
+
+                            <span class="input-group-addon" id="addon-units">MS</span>
+                        </h5>
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <div class="ucsb">    &nbsp; </div>
+                        <br>
+
+                        <div class="checkbox checkbox-default">
+                            <input type="checkbox" class="checkbox checkbox-default" id="auto-update"
+                                   ng-model="optionsForm['AUTO_UPDATE']" ng-true-value="1" ng-false-value="0" initial-validity="true">
+
+                            &nbsp;
+                            <label for="auto-update"> <strong> Auto Refresh </strong>
+
+
+                                &nbsp;
+                                <i
+                                        class="fa fa-question-circle-o"
+                                        aria-hidden="true"
+                                        style="color:#000000;"
+                                        popover-placement="left"
+                                        popover-trigger="'mouseenter'"
+                                        data-container="body"
+                                        uib-popover="If deactivated you are still able to refresh using the manual refresh button."
+                                ></i>
+
+
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+          </uib-accordion>
+
+    </div>
+  </form>
+
+
+
+  <div class="col-md-12">
+
+      <h5>
+          <button class="btn btn-infinity pull-right" ng-click="validateAndUpdate(optionsForm)"
+                  ng-disabled="!optionsForm.$valid">
+              <i class="fa fa-check" aria-hidden="true"></i>
+      </h5>
+      </button>
+  </div>
+
+  </div>
+
+
+
+    </div>
+
+</div>
+
+<div class="modal-footer modal-default">
+    <button ng-disabled="" id="closeModal" class="btn btn-default btn-md pull-left" ng-click="cancel()"><i
+            class="fa fa-times" aria-hidden="true"></i></button>
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        setTimeout(function () {
+            $('#closeModal').focus();
+        }, 50);
+
+    });
+
+</script>

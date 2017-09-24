@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+            <form name="setAccountControlForm">
+
+                <br>
+
+                <div class="col-md-12">
+                  <button class="btn btn-default" ng-click="addNewAccount()">
+                      <i class="fa fa-user-plus" aria-hidden="true"></i> &nbsp; Add Approval Accounts
+                  </button>
+                  <br><br>
+                </div>
+
+                <div id="approval-accounts">
+                    <div class="col-md-6" ng-repeat="account in setAccountControlForm.approveAccounts">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="" ng-model="account.value"
+                                   validator="required">
+
+                            <span class="input-group-addon btn btn-default" ng-click="openAddressBookModal(account)"
+                                  popover-placement="left" popover-trigger="'mouseenter'" uib-popover="">
+                            <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                        </span>
+
+                        </div>
+                          <br>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="ucsb">
+                      Minimum Approval Accounts (Quorum)
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The minimum number of accounts which need to approve transactions from this controlled account"
+                      ></i>
+
+
+                    </div>
+
+
+
+                    <h5 class="input-group">
+
+                        <input type="number" class="form-control" id="quorum" placeholder="2"
+                               ng-model="setAccountControlForm.quorum"
+                               validator="required" min="2" max="9" ng-init="setAccountControlForm.quorum=2">
+                        <span class="input-group-addon" id="addon-quorum">
+                          <i class="fa fa-users" aria-hidden="true"></i>
+                        </span>
+
+                    </h5>
+
+                </div>
+
+
+                <div class="col-md-6">
+                  <div class="ucsb"> &nbsp;  </div>
+                    <h5>
+                        <button ng-disabled="!setAccountControlForm.$valid" class="btn btn-infinity pull-right"
+                                ng-click="nextStep()"><i class="fa fa-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    </h5>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

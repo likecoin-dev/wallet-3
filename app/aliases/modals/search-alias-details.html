@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+          <br>
+            <div class="col-md-12">
+
+                <form name="searchAliasForm" ng-submit="onSubmit()">
+
+                  <div class="ucsb" for="query">
+                    Search for Alias Name
+
+                    &nbsp;
+                    <i
+                      class="fa fa-question-circle-o"
+                      aria-hidden="true"
+                      style="color:#000000;"
+                      popover-placement="left"
+                      popover-trigger="'mouseenter'"
+                      data-container="body"
+                      uib-popover="Search for alias starting with this characters or whole words."
+                    ></i>
+
+
+                  </div>
+                  <h5>
+                    <div class="input-group">
+
+                      <input type="text" class="form-control" id="query" placeholder="Enter query"
+                      ng-model="searchAliasForm.query" validator="aliasSearch">
+
+                      <span class="input-group-btn">
+                      <button type="submit" ng-disabled="!searchAliasForm.$valid" class="btn btn-infinity" ng-click="$nextStep()"><i class="fa fa-search"
+                      aria-hidden="true"></i>
+                      </span>
+
+                  </div>
+                </h5>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

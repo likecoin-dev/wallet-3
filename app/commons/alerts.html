@@ -1,0 +1,9 @@
+<div ng-controller="AlertDemoCtrl" ng-init="alertInit()">
+    <script type="text/ng-template" id="alert.html">
+        <div ng-transclude></div>
+    </script>
+
+    <div uib-alert ng-repeat="alert in alerts.main" ng-class="'alert-' + (alert.type || 'warning')"
+         close="closeAlert($index)">{{alert.msg}}
+    </div>
+</div>

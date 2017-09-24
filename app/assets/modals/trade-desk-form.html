@@ -1,0 +1,39 @@
+<multi-step-container steps="steps.tradeDeskForm" class="simple-prev-next">
+
+    <div class="modal-header modal-default text-center">
+
+        <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+        </div>
+
+        <h3 style="margin-right:70px;">
+            <span ng-bind-template=" {{$getActiveStep().title}} "></span>
+
+        </h3>
+
+        <button ng-disabled="" class="btn btn-default pull-right" ng-click="cancel()"><i class="fa fa-times"
+                                                                                         aria-hidden="true"></i>
+        </button>
+
+    </div>
+
+    <div class="modal-body">
+        <div ng-controller="AlertDemoCtrl" ng-init="alertInit('transferAsset')">
+            <script type="text/ng-template" id="alert.html">
+                <div ng-transclude></div>
+            </script>
+
+            <div uib-alert ng-repeat="alert in alerts.transferAsset" ng-class="'alert-' + (alert.type || 'warning')"
+                 close="closeAlert($index,'transferAsset')">{{alert.msg}}
+            </div>
+        </div>
+
+
+        <div class="centering text-center">
+
+            <step-container></step-container>
+
+        </div>
+
+    </div>
+
+</multi-step-container>

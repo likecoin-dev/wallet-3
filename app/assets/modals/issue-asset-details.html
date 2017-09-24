@@ -1,0 +1,126 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+          <br>
+                <form name="issueAssetForm">
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Name
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="The asset name is UNIQUE. Should be between 3 and 16 characters long. Once submitted, you will not be able to change this information again, ever. Make sure it is correct."
+                        ></i>
+
+                      </div>
+                      <h5>
+                        <input type="text" class="form-control" id="name" placeholder="Asset Name"
+                        ng-model="issueAssetForm.name" validator="required" pattern=".{3,16}"
+                        required-error-message="">
+                      </h5>
+                  </div>
+
+                  <div class="col-md-8">
+                      <div class="ucsb"> Description
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="Asset descriptions with max. 1.000 characters. Once submitted, you will not be able to change this information again, ever. Make sure it is correct."
+                        ></i>
+
+                      </div>
+                      <h5>
+                        <textarea class="form-control" rows="3" id="poll_description"
+                          placeholder="Asset description" validator="required" style="resize: none;"
+                          ng-model="issueAssetForm.description" validator="accountdesc" initial-validity="true">
+                        </textarea>
+                      </h5>
+                  </div>
+
+                  <div class="col-md-12">
+                      <hr/>
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Quantity
+
+                        &nbsp;
+                        <i
+                          class="fa fa-question-circle-o"
+                          aria-hidden="true"
+                          style="color:#000000;"
+                          popover-placement="left"
+                          popover-trigger="'mouseenter'"
+                          data-container="body"
+                          uib-popover="The number of shares for this asset."
+                        ></i>
+
+
+                      </div>
+
+                      <h5 class="input-group">
+                          <input type="number" class="form-control" id="shares"
+                                 placeholder="" validator="required"
+                                 ng-model="issueAssetForm.shares" min="1"
+                                 ng-init="issueAssetForm.shares=0">
+
+                          <span class="input-group-addon" id="addon-shares">QNT</span>
+                      </h5>
+
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> Decimals
+
+                          &nbsp;
+                          <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                            style="color:#000000;"
+                            popover-placement="left"
+                            popover-trigger="'mouseenter'"
+                            data-container="body"
+                            uib-popover="The maximum allowed number of digits after the asset quantity decimal point."
+                          ></i>
+
+                      </div>
+
+                      <h5 class="input-group">
+                          <input type="number" class="form-control" id="decimals"
+                                 placeholder="" validator="required" min="0" max="4"
+                                 ng-init="issueAssetForm.decimals=0"
+                                 ng-model="issueAssetForm.decimals">
+
+                          <span class="input-group-addon" id="addon-quantity">DECIMALS</span>
+                      </h5>
+
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="ucsb"> &nbsp; </div>
+                      <h5>
+                    <button ng-disabled="!issueAssetForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()"><i
+                            class="fa fa-chevron-right"
+                            aria-hidden="true"></i>
+                    </button>
+                    </h5>
+                  </div>
+
+
+                </form>
+
+        </div>
+
+
+    </div>
+</div>

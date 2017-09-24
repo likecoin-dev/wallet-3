@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-center">
+
+            <div class="col-md-12">
+                <img src="images/logo.png" alt="" width="250" style="margin-top: 50px; margin-bottom:50px;">
+            </div>
+
+            <div class="col-md-12">
+
+                <div class="panel panel-default centering" id="welcome" style="max-width: 500px;">
+
+
+                    <div class="panel-heading" style="height:55px;">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h4><i class="fa fa-unlock-alt" aria-hidden="true"></i> &nbsp; Please enter your
+                                    Passphrase </h4>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel-body">
+
+                        <form name="loginForm">
+
+                          <div class="row">
+                            <div class="col-md-12">
+                              <input type="password" class="form-control" id="secret"
+                                     placeholder="Minimum 35 characters or 15 words passphrase" ng-model="loginForm.secret" validator="required"
+                                     minlength="35">
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-9 text-left" >
+                              <br>
+                               <small><small> <strong> Note: </strong> Your passphrase is stored and secured for this session only and used to sign local transactions and <strong> NOT </strong> send over the internet to any other computer.</small></small>
+                            </div>
+
+                            <div class="col-md-3">
+                              <br>
+                              <button type="submit" class="btn btn-infinity" style="float:right;" ng-disabled="!loginForm.$valid"
+                                      ng-click="loginToAccount(loginForm.secret,true)">
+                                  SIGN IN
+                              </button>
+
+                            </div>
+
+                          </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-center">
+          <div class="col-md-12">
+          <small>  <small> Chrome v49+ | IE v11+ | Firefox v50+ | Opera v42+ | Android v4.4+ | Chrome for Android v55+ </small> </small>
+          </div>
+          <img src="images/angularjs.svg" class="grayscale" alt="" width="15"  style="margin-top: 10px; margin-bottom:5px;">
+          <img src="images/bootstrap.svg" class="grayscale" alt="" width="13"  style="margin-top: 10px; margin-bottom:5px;">
+        </div>
+
+    </div>
+</div>

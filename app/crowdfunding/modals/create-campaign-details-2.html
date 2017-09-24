@@ -1,0 +1,369 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+
+      <br>
+        <div class="centering text-left">
+          <form name="createCampaignForm2">
+
+            <div class="col-md-4">
+              <div class="ucsb">  Initial Supply
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The initial campaign supply. These units remains to campaign issuer."
+                ></i>
+
+              </div>
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="initialSupply"
+                         placeholder="" validator="required" min="0"
+                         ng-init="createCampaignForm2.initialSupply=0"
+                         ng-model="createCampaignForm2.initialSupply">
+
+                  <span class="input-group-addon" id="addon-initialSupply">UNITS</span>
+              </h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb">  Reserve Supply
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The reserve campaign supply. Subsctracted by initial supply those units are distributed among founders."
+                ></i>
+
+
+              </div>
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="reserveSupply"
+                         placeholder="" validator="required" min="1"
+                         ng-init="createCampaignForm2.reserveSupply=0"
+                         ng-model="createCampaignForm2.reserveSupply" >
+
+                  <span class="input-group-addon" id="addon-reserveSupply">UNITS</span>
+              </h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb">  Min Amount Per Unit
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The amount of XIN to raise for EACH unit of reserve supply. Total amount to raise is this amount multiplied by reserve supply."
+                ></i>
+
+            </div>
+
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="min_amount"
+                         placeholder=""
+                         ng-model="createCampaignForm2.minReservePerUnitTQT"
+                         ng-init="createCampaignForm2.minReservePerUnitTQT=0"
+                         min="0"
+                         >
+
+                  <span class="input-group-addon" id="addon-minReservePerUnitTQT">XIN</span>
+              </h5>
+            </div>
+
+
+            <!-- <div class="col-md-4">
+              <div class="ucsb"> Decimals
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The maximum allowed number of digits after the token quantity decimal point."
+                ></i>
+
+              </div>
+              <h5 class="input-group">
+                         <input type="number" class="form-control" id="decimals" placeholder="0"
+                                ng-model="createCampaignForm2.decimals" validator="required"
+                                ng-init="createCampaignForm2.decimals=0" min="0" max="2"
+                                >
+                  <span class="input-group-addon" id="addon-decimals">DIGITS</span>
+              </h5>
+            </div> -->
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb">  Total amount to Raise
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The amount of XIN to raise in total for your campaign."
+                ></i>
+
+            </div>
+
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="total_amount"
+                         placeholder=""
+                         ng-model="createCampaignForm2.totalAmount"
+                         ng-init="createCampaignForm2.totalAmount=0"
+                         ng-readonly="true"
+                         min="0"
+                         >
+
+                  <span class="input-group-addon" id="addon-total_amount">XIN</span>
+              </h5>
+            </div>
+
+            <div class="col-md-8">
+
+                <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                     uib-popover="">
+                     Issuance Height
+
+                     &nbsp;
+                     <i
+                       class="fa fa-question-circle-o"
+                       aria-hidden="true"
+                       style="color:#000000;"
+                       popover-placement="left"
+                       popover-trigger="'mouseenter'"
+                       data-container="body"
+                       uib-popover="Your campaign ends after this number of blocks"
+                     ></i>
+
+
+                </div>
+                <h5>
+                    <div class="input-group">
+
+                        <span class="input-group-addon" id="addon-amount" ng-init="getBlockChainStatus()"> <small> BLOCK : {{ createCampaignForm2.currentHeight }} </small> </span>
+
+                        <input type="number" class="form-control" ng-name="period" placeholder="1440"
+                               ng-init="createCampaignForm2.issuanceHeight=1440" ng-model="createCampaignForm2.issuanceHeight" ng-value="{{issuanceHeight}}"
+                               ng-min="1440" ng-max="43200" min="1440" max="43200" required>
+
+                        <span class="input-group-addon" id="addon-days">  <small>  {{ days }} Day(s) </small> </span>
+
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="min()">
+                            <i class="fa fa-fast-backward" aria-hidden="true"></i>
+                          </button>
+                          <button type="button" class="btn btn-default" ng-click="decrement()">
+                            <i class="glyphicon glyphicon-minus"></i>
+                          </button>
+                          <button type="button" class="btn btn-default" ng-click="increment()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                          </button>
+                          <button type="button" class="btn btn-default" ng-click="max()">
+                            <i class="fa fa-fast-forward" aria-hidden="true"></i>
+                          </button>
+                        </span>
+
+                    </div>
+                </h5>
+
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+
+
+
+
+            <!-- <div class="col-md-4">
+              <div class="ucsb">  Initial Supply
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="The initial campaign supply."
+                ></i>
+
+              </div>
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="initialSupply"
+                         placeholder="" validator="required" min="1"
+                         ng-init="createCampaignForm2.initialSupply=0"
+                         ng-model="createCampaignForm2.initialSupply">
+
+                  <span class="input-group-addon" id="addon-initialSupply">UNITS</span>
+              </h5>
+            </div> -->
+
+
+
+            <!-- <div class="col-md-4">
+              <div class="ucsb">  Total Supply
+
+                &nbsp;
+                <i
+                  class="fa fa-question-circle-o"
+                  aria-hidden="true"
+                  style="color:#000000;"
+                  popover-placement="left"
+                  popover-trigger="'mouseenter'"
+                  data-container="body"
+                  uib-popover="Max supply"
+                ></i>
+
+              </div>
+              <h5 class="input-group">
+                  <input type="number" class="form-control" id="maxSupply"
+                         placeholder="" validator="required" min="1"
+                         ng-init="createCampaignForm2.maxSupply=0"
+                          readonly="true"
+                         ng-model="createCampaignForm2.maxSupply">
+
+                  <span class="input-group-addon" id="addon-maxSupply">UNITS</span>
+              </h5>
+            </div> -->
+
+            <!-- <div class="col-md-12">
+                <hr/>
+            </div> -->
+
+
+            <!-- <div class="col-md-4">
+                <div class="ucsb">  Shuffable?
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="Mark if anonymous transfer (shuffle) of campaign token are not allowed."
+                  ></i>
+
+
+                </div>
+
+                <h5>
+                  <div ng-repeat="currency in currencyTypes" class="checkbox checkbox-default" >
+                      <input type="checkbox" value="{{currency}}" ng-model="createCampaignForm2.types[currency]" id="option-{{$index}}">
+                      <label for="option-{{$index}}">{{currency|currencyModel}}</label>
+                  </div>
+                  <span id="types"></span>
+                </h5>
+
+            </div> -->
+<!--
+            <div class="col-md-8">
+                <hr/>
+            </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <div ng-show="reservable">
+
+              <div class="col-md-6">
+                <div class="ucsb">  Min Amount Per Unit </div>
+                <h5 class="input-group">
+                    <input type="number" class="form-control" id="min_amount"
+                           placeholder=""
+                           ng-model="createCampaignForm2.minAmount"
+                           ng-init="createCampaignForm2.minAmount=''"
+                           >
+
+                    <span class="input-group-addon" id="addon-minAmount">XIN</span>
+                </h5>
+              </div>
+
+              <div class="col-md-6">
+                <div class="ucsb">  Reserve Supply </div>
+                <h5 class="input-group">
+                    <input type="number" class="form-control" id="reserveSupply"
+                           placeholder=""
+                           ng-model="createCampaignForm2.reserveSupply"
+                           ng-init="createCampaignForm2.reserveSupply=''"
+                           >
+
+                    <span class="input-group-addon" id="addon-reserveSupply">UNITS</span>
+                </h5>
+              </div>
+
+              <div class="col-md-12">
+                  <hr/>
+              </div>
+
+
+              <div class="col-md-6">
+                <div class="ucsb">  Activation Height </div>
+                <h5 class="input-group">
+                    <input type="number" class="form-control" id="activHeight"
+                           placeholder=""
+                           ng-model="createCampaignForm2.activHeight"
+                           ng-init="createCampaignForm2.activHeight=0"
+                           >
+
+                    <span class="input-group-addon" id="addon-activHeight">@BLOCK</span>
+                </h5>
+              </div>
+
+            </div> -->
+
+            <div class="col-md-12">
+
+                  <button ng-disabled="!createCampaignForm2.$valid" class="btn btn-infinity pull-right"
+                          ng-click="$nextStep()">
+                      <i class="fa fa-chevron-right" aria-hidden="true"></i> </button>
+
+                  <button ng-disabled="$isFirst()" class="btn btn-default pull-left" ng-click="$previousStep()">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i> </button>
+
+            </div>
+
+                </form>
+
+        </div>
+
+
+    </div>
+    <div ng-init="initStep1() "></div>
+</div>

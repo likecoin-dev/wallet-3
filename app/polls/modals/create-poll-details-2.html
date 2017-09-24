@@ -1,0 +1,132 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <div class="col-md-12">
+                <br>
+                <form name="createPollForm2">
+
+                    <div class="col-md-3">
+                        <div class="ucsb"> Minimum Options
+
+                          &nbsp;
+                          <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                            style="color:#000000;"
+                            popover-placement="left"
+                            popover-trigger="'mouseenter'"
+                            data-container="body"
+                            uib-popover="The minimum number of option a voter can choose. Set this to 1."
+                          ></i>
+
+
+                        </div>
+                        <h5>
+                            <input type="number" class="form-control" id="name" placeholder="1"
+                                   ng-model="createPollForm2.minNumberOfOptions" validator="required"
+                                   ng-init="createPollForm2.minNumberOfOptions=1"
+                                   required-error-message="" min="1" max="10">
+                        </h5>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="ucsb"> Maximum Options
+
+                          &nbsp;
+                          <i
+                            class="fa fa-question-circle-o"
+                            aria-hidden="true"
+                            style="color:#000000;"
+                            popover-placement="left"
+                            popover-trigger="'mouseenter'"
+                            data-container="body"
+                            uib-popover="The maximum number of option a voter can choose from. For yes/no question this value has to set to 1."
+                          ></i>
+
+
+                        </div>
+                        <h5>
+                            <input type="number" class="form-control" id="name" placeholder="1"
+                                   ng-model="createPollForm2.maxNumberOfOptions" validator="required"
+                                   ng-init="createPollForm2.maxNumberOfOptions=1"
+                                   min="1" max="10"
+                                   required-error-message="">
+                        </h5>
+                    </div>
+
+                    <div class="col-md-6" ng-init="getBlockChainStatus()">
+
+                        <div class="ucsb">
+                            Duration in Blocks
+
+                            &nbsp;
+                            <i
+                              class="fa fa-question-circle-o"
+                              aria-hidden="true"
+                              style="color:#000000;"
+                              popover-placement="left"
+                              popover-trigger="'mouseenter'"
+                              data-container="body"
+                              uib-popover="The duration for this poll. 1.440 Blocks are equal one day. Range from min. 1.440 to max. 20.000 Blocks"
+                            ></i>
+
+
+                        </div>
+                        <h5>
+                            <div class="input-group">
+                                <input type="number" class="form-control" ng-name="finishHeight" placeholder="1440"
+                                       ng-init="createPollForm2.finishHeight=1440"
+                                       ng-model="createPollForm2.finishHeight" ng-value="{{finishHeight}}" ng-min="1440"
+                                       ng-max="20160" required>
+                                <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="min()"> <i class="fa fa-fast-backward"
+                                                                                             aria-hidden="true"></i> </button>
+                          <button type="button" class="btn btn-default" ng-click="decrement()"> <i
+                                  class="glyphicon glyphicon-minus"></i>  </button>
+                          <button type="button" class="btn btn-default" ng-click="increment()"> <i
+                                  class="glyphicon glyphicon-plus"></i>  </button>
+                          <button type="button" class="btn btn-default" ng-click="max()"> <i class="fa fa-fast-forward"
+                                                                                             aria-hidden="true"></i> </button>
+                        </span>
+                            </div>
+                        </h5>
+
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <hr/>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <button class="btn btn-default" ng-click="addNewOption()">
+                            <i class="fa fa-plus-square" aria-hidden="true"></i> &nbsp; Add Options for this poll
+                        </button>
+                        <br><br>
+                    </div>
+
+                    <div id="options" class="col-md-6" ng-repeat="option in createPollForm2.pollOptions">
+                        <input type="text" class="form-control" ng-model="option.value"
+                               placeholder="Enter option text here" validator="required"/><br>
+                    </div>
+                    <div class="col-md-12">
+                        <hr/>
+                    </div>
+
+                    <div class="col-md-12">
+                        <button ng-disabled="!createPollForm2.$valid" class="btn btn-infinity pull-right"
+                                ng-click="$nextStep()"><i
+                                class="fa fa-chevron-right"
+                                aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>

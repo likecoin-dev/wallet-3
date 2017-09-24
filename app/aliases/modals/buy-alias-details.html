@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+
+          <form name="buyAliasForm">
+          <br>
+
+
+          <div class="col-md-6">
+            <div class="ucsb"> Alias Name
+
+              &nbsp;
+              <i
+                class="fa fa-question-circle-o"
+                aria-hidden="true"
+                style="color:#000000;"
+                popover-placement="left"
+                popover-trigger="'mouseenter'"
+                data-container="body"
+                uib-popover="The alias to buy."
+              ></i>
+
+            </div>
+            <h5>
+
+                  <div class="dont-break-out">  {{ buyAliasForm.name }} </div>
+
+            </h5>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover="" > Alias Price
+
+              &nbsp;
+              <i
+                class="fa fa-question-circle-o"
+                aria-hidden="true"
+                style="color:#000000;"
+                popover-placement="left"
+                popover-trigger="'mouseenter'"
+                data-container="body"
+                uib-popover="The price for this alias."
+              ></i>
+
+
+            </div>
+            <h5>
+
+                  {{ buyAliasForm.amount | amountTQT  }}   <small> XIN </small>
+
+            </h5>
+
+          </div>
+
+          <div class="col-md-12"> <hr/> </div>
+
+          <div class="col-md-12">
+
+            <h5> <button ng-disabled="!buyAliasForm.$valid" class="btn btn-infinity pull-right" ng-click="$nextStep()">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>  </button></h5>
+          </div>
+
+
+          </form>
+
+    </div>
+  </div>
+</div>
+
+<div ng-init="initStep1()"></div>

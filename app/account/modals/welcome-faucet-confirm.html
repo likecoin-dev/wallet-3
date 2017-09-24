@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-justify">
+            <form name="welcomeFaucetForm">
+
+                <br>
+
+                <div class="col-md-12">
+                  <h4>  Note </h4>
+
+           
+
+              </div>
+
+              <div class="col-md-12">
+                  <hr/>
+              </div>
+
+                <div class="col-md-8">
+
+                  <h4 class="input-group">
+                    <input type="text" class="form-control" id="email"
+                           placeholder="Type your email" validator="required,email"
+                           ng-model="welcomeFaucetForm.email">
+
+                      <span class="input-group-addon" id="addon-amount">EMAIL</span>
+                  </h4>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <h5>
+                        <button class="btn btn-success pull-right"
+                        ng-disabled="!welcomeFaucetForm.$valid"
+                                ng-click="makeWelcomFaucetCall(welcomeFaucetForm)"> Send
+                        </button>
+                    </h5>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

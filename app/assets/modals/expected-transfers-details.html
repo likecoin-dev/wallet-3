@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <br>
+            <div class="col-md-12">
+                <form name="expectedTransfersForm" ng-submit="onSubmit()">
+                    <div class="col-md-6">
+                        <div class="ucsb">
+                            Recipient
+
+                            &nbsp;
+                            <i
+                                    class="fa fa-question-circle-o"
+                                    aria-hidden="true"
+                                    style="color:#000000;"
+                                    popover-placement="left"
+                                    popover-trigger="'mouseenter'"
+                                    data-container="body"
+                                    uib-popover="The recipient account to receive the asset."
+                            ></i>
+
+
+                        </div>
+                        <h5>
+                            <div class="input-group">
+                    <span class="input-group-addon btn btn-default"
+                          ng-click="searchAliases (expectedTransfersForm.recipientRS,expectedTransfersForm,'recipientRS')" ng-controller="BaseCtrl"
+                          popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Alias Account Search. Type in an alias, connected to an account to get the accout Id.">
+                      <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </span>
+                                <input type="text" class="form-control" placeholder="XIN_____-____-____-____"
+                                       ng-model="expectedTransfersForm.recipientRS" validator="required" id="recipientRS">
+                                <span class="input-group-addon btn btn-default" ng-click="openAddressBookModal()"
+                                      popover-placement="left" popover-trigger="'mouseenter'"
+                                      uib-popover="Open your bookmarks to insert an account id">
+                      <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </span>
+                            </div>
+                        </h5>
+
+                    </div>
+
+                    <div class="ucsb" for="query"> Asset ID
+
+                        &nbsp;
+                        <i
+                                class="fa fa-question-circle-o"
+                                aria-hidden="true"
+                                style="color:#000000;"
+                                popover-placement="left"
+                                popover-trigger="'mouseenter'"
+                                data-container="body"
+                                uib-popover="The Asset ID for this transfer."
+                        ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="query" placeholder="Enter asset Id"
+                                   ng-model="expectedTransfersForm.asset" validator="required">
+                            <span class="input-group-btn">
+                      <button type="submit" ng-disabled="!expectedTransfersForm.$valid" class="btn btn-infinity"
+                              ng-click="$nextStep()">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                          </button>
+                      </span>
+                        </div>
+                    </h5>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

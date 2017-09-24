@@ -1,0 +1,107 @@
+<style>
+    .modal .modal-dialog {
+        max-width: 768px;
+    }
+</style>
+
+<div class="modal-header modal-default text-center">
+
+    <div class="pull-left"><img src="images/logo_modal.png" style="margin-left:10px;margin-top:5px;height:50px;">
+    </div>
+
+    <h3 style="margin-right:70px;">
+        Validate Token
+    </h3>
+
+</div>
+<div class="modal-body">
+
+  <div class="container-fluid">
+      <div class="row-fluid">
+          <div class="centering text-left">
+
+
+            <div ng-controller="AlertDemoCtrl" ng-init="alertInit('decodeToken')">
+                <script type="text/ng-template" id="alert.html">
+                    <div ng-transclude></div>
+                </script>
+
+                <div uib-alert ng-repeat="alert in alerts.decodeToken" ng-class="'alert-' + (alert.type || 'warning')"
+                     close="closeAlert($index,'decodeToken')">{{alert.msg}}
+                </div>
+            </div>
+
+
+
+            <br>
+
+
+            <div class="col-md-12">
+                <div class="ucsb"> Signature Hash
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="The signature hash based on a token."
+                  ></i>
+
+                </div>
+                <h5>
+
+                  <textarea class="form-control" rows="2" id="inputToken"
+                    placeholder="" style="resize: none;"
+                    ng-model="validateTokenForm.token" validator="required" initial-validity="true">
+                  </textarea>
+
+                </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12">
+                <div class="ucsb"> Signature Input
+
+                  &nbsp;
+                  <i
+                    class="fa fa-question-circle-o"
+                    aria-hidden="true"
+                    style="color:#000000;"
+                    popover-placement="left"
+                    popover-trigger="'mouseenter'"
+                    data-container="body"
+                    uib-popover="The signature hash token input."
+                  ></i>
+
+
+                </div>
+                <h4 class="input-group">
+                  <div class="input-group-addon" compile="valid | isEnabled" style="color: {{color}}">  </div>
+                  <input type="text" class="form-control" id="inputMessage"
+                         placeholder="" validator="required"
+                         ng-model="validateTokenForm.message"
+                         min=1 max=99 >
+
+                  <div class="input-group-addon"> {{account}} </div>
+                  <span class="input-group-btn">
+                     <button type="submit" ng-disabled="false" class="btn btn-{{buttonColor}}" ng-click="validateToken(validateTokenForm.token, validateTokenForm.message )">
+                      Validate </button>
+                  </span>
+                </h4>
+
+              </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer modal-default">
+  <button ng-disabled="" class="btn btn-default btn-md pull-left" ng-click="cancel()">  <i class="fa fa-times" aria-hidden="true"></i> </button>
+</div>

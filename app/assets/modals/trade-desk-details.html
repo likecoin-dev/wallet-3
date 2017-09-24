@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="row">
+            <nvd3 options="tradeChartOptions" data="tradeData" class="with-3d-shadow with-transitions"></nvd3>
+        </div>
+        <div class="row">
+                <div class="col-md-6">
+                    <form name="buyOrderForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="price" class="col-md-2 control-label"> Price </label>
+                            <input class="form-control" id="price" placeholder="Asset Price"
+                                   ng-model="buyOrderForm.price"
+                                   class="col-md-4">
+                        </div>
+                        <div class="form-group">
+
+                            <lablel for="quantity" class="col-md-2 control-label"> Quantity</lablel>
+                            <input class="form-control" id="quantity" ng-model="buyOrderForm.quantity"
+                                   placeholder="Type in the amount to send" class="col-md-4">
+                        </div>
+                        <div class="form-group">
+
+                            <lablel for="totalPrice" class="col-md-2 control-label"> Total Price</lablel>
+                            <input type="number" class="form-control" id="totalPrice" ng-model="buyOrderForm.totalPrice"
+                                   placeholder="Type in the amount to send" class="col-md-4">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default" ng-click="placeOrderClick(buyOrderForm,'bid')">Buy</button>
+                        </div>
+                    </form>
+
+                    <div id="ask-orders-table" class="trade-orders-table">
+                        <table datatable="" dt-options="dtAskOrdersOptions"
+                               dt-columns="dtAskOrdersColumns" dt-instance="dtAskOrdersInstanceCallback"
+                               class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Sum</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <form name="askOrderForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="price" class="col-md-2 control-label"> Price </label>
+                            <input class="form-control" id="ask-price" placeholder="Asset Price"
+                                   ng-model="askOrderForm.price"
+                                   class="col-md-4">
+                        </div>
+                        <div class="form-group">
+
+                            <lablel for="quantity" class="col-md-2 control-label"> Quantity</lablel>
+                            <input class="form-control" id="ask-quantity" ng-model="askOrderForm.quantity"
+                                   placeholder="Type in the amount to send" class="col-md-4">
+                        </div>
+                        <div class="form-group">
+
+                            <lablel for="totalPrice" class="col-md-2 control-label"> Total Price</lablel>
+                            <input type="number" class="form-control" id="ask-totalPrice" ng-model="askOrderForm.totalPrice"
+                                   placeholder="Type in the amount to send" class="col-md-4">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-default" ng-click="placeOrderClick(askOrderForm,'ask')">Ask</button>
+                        </div>
+                    </form>
+
+                    <div id="bid-orders-table" class="trade-orders-table">
+                        <table datatable="" dt-options="dtBidOrdersOptions"
+                               dt-columns="dtBidOrdersColumns" dt-instance="dtBidOrdersInstanceCallback"
+                               class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                              <th>Quantity</th>
+                              <th>Price</th>
+                              <th>Sum</th>
+                              <th>Total</th>
+                            </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table datatable="" dt-options="dtTradeOptions"
+                       dt-columns="dtTradeColumns" dt-instance="dtTradeInstanceCallback"
+                       class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Seller RS</th>
+                        <th>Height</th>
+                        <th>Buyer RS</th>
+                        <th>Trade Type</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div ng-init="initStep1()"></div>
+    </div>
+</div>

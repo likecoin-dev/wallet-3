@@ -1,0 +1,54 @@
+<div ng-init="cancelSubscription()">
+  <div class="container-fluid">
+      <div class="row-fluid" cg-busy="setCancelSubscriptionPromise">
+          <div class="centering text-left">
+
+              <br>
+              <div class="col-lg-6" >
+                <div class="ucsb"> Sunscription ID </div>
+                <h5> </strong> {{cancelSubscription.id}} </strong>  </h5>
+              </div>
+
+              <div class="col-lg-6" >
+                <div class="ucsb"> Recipient </div>
+                <div class="dont-break-out"> <h5> </strong>  {{cancelSubscription.recipientRS}} </strong>  </h5> </div>
+              </div>
+
+              <div class="col-lg-12">
+                  <hr/>
+              </div>
+
+              <div class="col-lg-6" >
+                <div class="ucsb"> Valid </div>
+                <h5><div compile='validBytes|txIsValid'></div></h5>
+              </div>
+
+              <div class="col-lg-6" >
+                <div class="ucsb"> Service Fee </div>
+                <h5>  {{tx_fee | amountTKN}} XIN </small> </div>  </h5>
+              </div>
+
+              <div class="col-lg-12">
+                  <hr/>
+              </div>
+
+              <div class="col-lg-12 text-left">
+
+                <button ng-disabled="" type="button" class="btn btn-default pull-left"
+                        ng-click= "$previousStep()"><i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button> &nbsp;
+
+                <button type="button" class="btn btn-default" ng-click="unsignedTx=!unsignedTx"> <i class="fa fa-key" aria-hidden="true"></i>  &nbsp; Signed Transaction </button>
+
+                <button type="button" class="btn btn-infinity pull-right" ng-disabled="!validBytes" ng-click="broadcastTransaction(transactionBytes)"> <i class="fa fa-check" aria-hidden="true"></i> </button>
+                <br><br>
+                <div uib-collapse="!unsignedTx" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+                  <div class="well well-lg dont-break-out"> {{transactionBytes}} </div>
+                </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>

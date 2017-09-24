@@ -1,0 +1,44 @@
+<div class="col-lg-10" ng-controller="AccountLessorCtrl">
+
+  <cc-auto-refresh-fn
+          refresh-fn = "reloadLessors()"
+          refresh-interval = "options.REFRESH_INTERVAL_MILLI_SECONDS"
+          refresh-paused = "!options.AUTO_UPDATE"
+  >
+  </cc-auto-refresh-fn>
+
+  <uib-accordion close-others="false">
+      <div uib-accordion-group class="panel-default" ng-init="status = {open: true}" is-open="status.open" style="background-color:#FFFFFF;" >
+
+          <uib-accordion-heading>
+              Account Lessors
+              <i class="pull-right fa" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+          </uib-accordion-heading>
+
+          <div class="btn-group">
+            <label class="btn btn-default btn-xs" ng-click="reloadLessors()"
+             popover-placement="top" popover-trigger="'mouseenter'" uib-popover="Reload"><i class="fa fa-refresh" aria-hidden="true"></i></label>
+          </div> <br>
+
+          <table class="table table-striped table-bordered" id="block-transactions-table"
+                 datatable="" dt-options="dtAccountLessorsOptions"
+                 dt-columns="dtAccountLessorsColumns" dt-instance="dtInstanceLessorsCallback">
+              <thead>
+              <tr>
+                  <th>Account</th>
+                  <th>Guaranteed Balance</th>
+                  <th>Height From</th>
+                  <th>Height To</th>
+                  <th>Blocks Left</th>
+                  <th>Days Left</th>
+                  <th>%</th>
+
+              </tr>
+              </thead>
+
+          </table>
+
+        </div>
+</uib-accordion>
+    <div class="footer-padding"></div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container-fluid" >
+    <div class="row-fluid">
+        <div class="centering text-justify">
+            <div class="col-md-12" ng-init="createNewAccount()">
+
+              <strong>  Passphrase  </strong>  <br>
+              <!-- <h4 stopccp alert="true"> {{secret}} </h4> -->
+              <h4> {{secret}} </h4>
+
+              <hr>
+
+              <strong> Account </strong>  <br>
+              <h4> {{accountDetails.accountRs}} </h4>
+
+              <hr>
+              <strong> Public Key </strong>  <br>
+              <h4> {{accountDetails.publicKey}} </h4>
+
+              <hr>
+              <button type="submit" class="btn btn-infinity btn-md" ng-click="createNewAccount()">
+                  Generate new
+              </button>
+
+              <hr>
+
+              <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;
+              Make sure that you keep the passphrase safe. If you lose your passphrase later on, your
+              account can't be restored and all your funds will be lost. <strong> Write down </strong>
+              your passphrase in the next step you will be asked to re-type it for confirmation.
+
+            </div>
+
+        </div>
+    </div>
+</div>

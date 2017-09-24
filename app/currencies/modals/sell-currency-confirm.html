@@ -1,0 +1,78 @@
+<div class="container-fluid" cg-busy="sellCurrencyPromise">
+    <div class="row-fluid">
+        <div class="centering text-justify" ng-init="sellCurrency()">
+
+            <br>
+
+
+            <div class="col-md-6">
+                <div class="ucsb"> Name</div>
+                <h5> <div class="dont-break-out"> {{sellCurrencyForm.currencyId}} </div></h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ucsb"> Currency</div>
+                <h5><div class="dont-break-out"> {{sellCurrencyForm.currency}} </div></h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ucsb"> Price </div>
+
+                <h5>  {{sellCurrencyForm.rate | numericalString}}   <small> XIN </small> </h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ucsb"> Quantity </div>
+                <h5>  {{sellCurrencyForm.shares}}  </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="ucsb"> Valid </div>
+                <h5><div compile='validBytes|txIsValid'></div></h5>
+            </div>
+
+            <div class="col-md-6">
+                <div class="ucsb"> Service Fee </div>
+                <h5></strong> {{tx_fee | amountTKN }} </strong> <small>XIN</small> </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-12">
+
+
+
+                <button type="button" class="btn btn-default" ng-click="signedTx = !signedTx">
+                    <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Signed Transaction
+                </button>
+
+
+                <button ng-disabled="!validBytes" type="button" class="btn btn-infinity pull-right"
+                        ng-click="broadcastTransaction(transactionBytes)"><i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+
+                <br><br>
+                <div uib-collapse="!signedTx" class="collapse" aria-expanded="false" aria-hidden="true"
+                     style="height: 0px;">
+                    <div class="well well-lg dont-break-out">
+                        {{transactionBytes}}
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

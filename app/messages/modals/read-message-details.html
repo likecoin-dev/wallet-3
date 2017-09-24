@@ -1,0 +1,55 @@
+
+
+<div class="container-fluid" ng-init="readMessage()" cg-busy="readMessagePromise">
+
+    <div class="row-fluid">
+
+        <div class="centering text-left">
+
+          <br>
+
+          <div class="col-lg-6 col-md-6 ">
+
+            <div class="ucsb"> Date </div>
+            <h5>  </strong> {{params.timestamp|timestamp}} </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-6 col-md-6 ">
+
+            <div class="ucsb"> Type </div>
+            <h5>  </strong> <div compile="params.type|transactionType" style="margin-top:0px;"> </div> </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-12 col-md-12"> <hr/> </div>
+
+          <div class="col-lg-6 col-md-6 ">
+
+            <div class="ucsb"> Sender</div>
+            <h5> </strong>  {{params.senderRS}} </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-6 col-md-6 ">
+
+            <div class="ucsb"> Recipient </div>
+            <h5>  </strong> {{params.recipientRS}} </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-12 col-md-12"> <hr/> </div>
+
+          <div class="col-lg-12">
+
+            <div class="ucsb"> Message </div>
+            <h5> </strong>  {{message}} </strong> </h5>
+
+          </div>
+
+          <div class="col-lg-12"> <hr/> </div>
+
+        </div>
+
+    </div>
+</div>

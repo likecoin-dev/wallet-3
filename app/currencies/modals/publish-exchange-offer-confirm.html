@@ -1,0 +1,118 @@
+<div class="container-fluid" cg-busy="publishExchangeOfferPromise">
+    <div class="row-fluid">
+        <div class="centering text-justify" ng-init="publishExchangeOffer()">
+
+            <br>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Name </div>
+                <h5>  {{publishExchangeOfferForm.name}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Ticker </div>
+                <h5> {{publishExchangeOfferForm.ticker}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Currency Id </div>
+                <h5>  {{publishExchangeOfferForm.currencyId}}  </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Buy Rate </div>
+                <h5> {{publishExchangeOfferForm.buyRate}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Buy Limit </div>
+                <h5> {{publishExchangeOfferForm.buyLimit}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Initial Buy Supply </div>
+                <h5> {{publishExchangeOfferForm.initialBuySupply}}  </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+
+            <div class="col-md-4">
+              <div class="ucsb"> Sell Rate </div>
+                <h5>  {{publishExchangeOfferForm.sellRate}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Sell Limit </div>
+                <h5>  {{publishExchangeOfferForm.sellLimit}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+              <div class="ucsb"> Initial Sell Supply </div>
+                <h5>  {{publishExchangeOfferForm.initialSellSupply}}  </h5>
+            </div>
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+
+            <div class="col-md-4">
+              <div class="ucsb"> Expiration Height </div>
+                <h5>  {{publishExchangeOfferForm.expirationHeight}}  </h5>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Service Fee</div>
+                <h5>  {{ tx_fee | amountTKN }}
+                    <small> XIN</small>
+                </h5>
+            </div>
+
+            <div class="col-md-4">
+                <div class="ucsb"> Valid </div>
+                <h5><div compile='validBytes|txIsValid'></div></h5>
+            </div>
+
+
+            <div class="col-md-12">
+                <hr/>
+            </div>
+
+
+            <div class="col-md-12">
+
+                <button ng-disabled="" type="button" class="btn btn-default pull-left"
+                        ng-click="$previousStep()"><i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                &nbsp;
+
+                <button type="button" class="btn btn-default" ng-click="signedTx = !signedTx">
+                    <i class="fa fa-key" aria-hidden="true"></i> &nbsp; Signed Transaction
+                </button>
+
+
+                <button ng-disabled="!validBytes" type="button" class="btn btn-infinity pull-right"
+                        ng-click="broadcastTransaction(transactionBytes)"><i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+
+                <br><br>
+                <div uib-collapse="!signedTx" class="collapse" aria-expanded="false" aria-hidden="true"
+                     style="height: 0px;">
+                    <div class="well well-lg dont-break-out">
+                        {{transactionBytes}}
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>

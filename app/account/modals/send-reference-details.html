@@ -1,0 +1,191 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="centering text-left">
+            <br>
+            <form name="sendReferencedForm">
+
+                <div class="col-md-6">
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover=""> Recipient
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+                    <span class="input-group-addon btn btn-default"
+                          ng-click="searchAliases (sendReferencedForm.recipientRS,sendReferencedForm,'recipientRS')" ng-controller="BaseCtrl"
+                          popover-placement="top" popover-trigger="'mouseenter'" uib-popover="Alias Account search">
+                      <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </span>
+                            <input type="text" class="form-control" placeholder="XIN-____-____-____-____"
+                                   ng-model="sendReferencedForm.recipientRS" validator="required" id="recipientRS">
+                            <span class="input-group-addon btn btn-default" ng-click="openAddressBookModal()"
+                                  popover-placement="left" popover-trigger="'mouseenter'"
+                                  uib-popover="Open addressbook">
+                      <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </span>
+                        </div>
+                    </h5>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'" uib-popover=""> Amount
+                    </div>
+
+                    <h4 class="input-group">
+                        <input type="number" class="form-control" id="amount"
+                               placeholder="Type in the amount to send" validator="required"
+                               ng-model="sendReferencedForm.amount">
+
+                        <span class="input-group-addon" id="addon-amount">XIN</span>
+                    </h4>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="ucsb">
+                         Number Blocks to Defer Transaction
+
+                         &nbsp;
+                         <i
+                           class="fa fa-question-circle-o"
+                           aria-hidden="true"
+                           style="color:#000000;"
+                           popover-placement="left"
+                           popover-trigger="'mouseenter'"
+                           data-container="body"
+                           uib-popover="Your transaction will be executed or expires if not claimed within this number of blocks."
+                         ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+
+
+                        <span class="input-group-addon" id="addon-amount" ng-init="getBlockChainStatus()"> <small> BLOCK : {{ sendReferencedForm.currentHeight }} </small> </span>
+
+                            <input type="number" class="form-control" ng-name="period" placeholder="1440"
+                                   ng-init="sendReferencedForm.deferredHeight=1440" ng-model="sendReferencedForm.deferredHeight" ng-value="{{deferredHeight}}"
+                                   ng-min="10" ng-max="14400" min="10" max="14400" required>
+
+                            <span class="input-group-addon" id="addon-days">  <small>  {{ days }} Day(s) </small> </span>
+
+                            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="min()"> <i class="fa fa-fast-backward"
+                                                                                           aria-hidden="true"></i> </button>
+                        <button type="button" class="btn btn-default" ng-click="decrement()"> <i
+                                class="glyphicon glyphicon-minus"></i>  </button>
+                        <button type="button" class="btn btn-default" ng-click="increment()"> <i
+                                class="glyphicon glyphicon-plus"></i>  </button>
+                        <button type="button" class="btn btn-default" ng-click="max()"> <i class="fa fa-fast-forward"
+                                                                                           aria-hidden="true"></i> </button>
+                      </span>
+
+                        </div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12">
+
+                    <div class="ucsb"> Referenced Full Hash
+
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="Your transaction will be executed if this transaction hash is included into the blockchain"
+                      ></i>
+
+                    </div>
+
+                    <h4 class="input-group">
+                        <input type="text" class="form-control" id="hash"
+                               placeholder="Type in the hash" validator="required"
+                               ng-model="sendReferencedForm.fullHash">
+
+                        <span class="input-group-addon" id="addon-amount">HASH</span>
+                    </h4>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-12">
+
+                    <button ng-disabled="!sendReferencedForm.$valid" class="btn btn-infinity pull-right"
+                            ng-click="$nextStep()"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+
+
+                    <button type="button" class="btn btn-default" ng-click="addMessage = !addMessage">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp; Add encrypted message
+
+                    </button>
+                    <button type="button" class="btn btn-default" ng-click="addPubKey = !addPubKey">
+                        <i class="fa fa-lock" aria-hidden="true"></i> &nbsp; Add recipient public key
+
+                    </button>
+                    <br><br>
+
+                    <div uib-collapse="!addMessage" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well well-lg">
+
+                            <div class="form-group">
+
+                                <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                                     uib-popover="For message encryption the recipient public key has to be know.">
+                                    Message
+                                    <small> (max. 160 chars)</small>
+                                </div>
+
+                                <br>
+
+                                <input type="text" class="form-control" id="message" placeholder=""
+                                       ng-model="sendReferencedForm.message">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div uib-collapse="!addPubKey" class="collapse" aria-expanded="false" aria-hidden="true"
+                         style="height: 0px;">
+                        <div class="well well-lg">
+                            <div class="form-group">
+                                <div class="ucsb" popover-placement="left" popover-trigger="'mouseenter'"
+                                     uib-popover="Additional security for brand new accounts without any outbound transaction.">
+                                    Recipient Public Key Announcement
+                                    <small> (Optional)</small>
+                                </div>
+                                <br>
+                                <input type="text" class="form-control" id="message" placeholder=""
+                                       ng-model="sendReferencedForm.pubkey">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+ 
+
+            </form>
+<div ng-init="initStep1()"></div>
+        </div>
+
+    </div>
+</div>

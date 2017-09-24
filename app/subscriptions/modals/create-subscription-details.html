@@ -1,0 +1,119 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+
+        <div class="centering text-left">
+
+            <br>
+
+            <form name="createSubscription">
+
+                <div class="col-md-6">
+                    <div class="ucsb">
+                      Recipient
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The recipient account to send token to"
+                      ></i>
+
+
+                    </div>
+                    <h5>
+                        <div class="input-group">
+                    <span class="input-group-addon btn btn-default"
+                          ng-click="searchAliases (createSubscription.recipientRS,createSubscription,'recipientRS')" ng-controller="BaseCtrl"
+                          popover-placement="left" popover-trigger="'mouseenter'" uib-popover="Enter an alias connected to an account to get the accout Id.">
+                      <i class="fa fa-share-alt" aria-hidden="true"></i>
+                    </span>
+                            <input type="text" class="form-control" placeholder="XIN-____-____-____-____"
+                                   ng-model="createSubscription.recipientRS" validator="required" id="recipientRS">
+                            <span class="input-group-addon btn btn-default" ng-click="openAddressBookModal()"
+                                  popover-placement="left" popover-trigger="'mouseenter'"
+                                  uib-popover="Open your bookmarks to insert an account id">
+                      <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </span>
+                        </div>
+                    </h5>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="ucsb">
+                      Amount
+                      &nbsp;
+                      <i
+                        class="fa fa-question-circle-o"
+                        aria-hidden="true"
+                        style="color:#000000;"
+                        popover-placement="left"
+                        popover-trigger="'mouseenter'"
+                        data-container="body"
+                        uib-popover="The amount you like to send to the recipient account."
+                      ></i>
+
+                    </div>
+
+                    <h4 class="input-group">
+                        <input type="number" class="form-control" id="amount"
+                               placeholder="Type in the amount to send" validator="required" min="0"
+                               ng-model="createSubscription.amount">
+
+                        <span class="input-group-addon" id="addon-amount"> XIN  </span>
+                    </h4>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr/>
+                </div>
+
+                <div class="col-md-6">
+
+                  <div class="ucsb">
+                    Interval in Days
+                    &nbsp;
+                    <i
+                      class="fa fa-question-circle-o"
+                      aria-hidden="true"
+                      style="color:#000000;"
+                      popover-placement="left"
+                      popover-trigger="'mouseenter'"
+                      data-container="body"
+                      uib-popover="The subscription interval. 1H min, 365D max."
+                    ></i>
+
+                  </div>
+
+                  <h4 class="input-group">
+                      <input type="number" class="form-control" id="interval"
+                             placeholder="Type in the interval in days or fractions" validator="required" min="0.0417" max="365"
+                             ng-model="createSubscription.interval">
+
+                      <span class="input-group-addon" id="addon-interval"> Days  </span>
+                  </h4>
+
+                </div>
+
+                <div class="col-md-6">
+
+                  <div class="ucsb">&nbsp;</div>
+                  <h4>
+                    <button ng-disabled="!createSubscription.$valid" class="btn btn-infinity pull-right"
+                    ng-click="$nextStep()"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                  </h4>
+                </div>
+
+
+
+            </form>
+            
+        </div>
+
+    </div>
+</div>
